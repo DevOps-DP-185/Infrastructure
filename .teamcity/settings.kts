@@ -10,7 +10,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 version = "2019.2"
 
 project {
-    name = "Test"
 
     features {
         dockerRegistry {

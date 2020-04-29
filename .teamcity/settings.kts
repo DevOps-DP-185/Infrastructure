@@ -118,11 +118,9 @@ object Discovery_DiscoveryBuild : BuildType({
 object Discovery : GitVcsRoot({
     name = "Discovery"
     url = "https://github.com/DevOps-DP-185/Discovery.git"
-    }
 })
 
 object Ansible : GitVcsRoot({
     name = "Ansible"
     url = "https://github.com/DevOps-DP-185/Ansible.git"
-    }
 })

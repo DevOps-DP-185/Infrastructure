@@ -10,7 +10,8 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 version = "2019.2"
 
 project {
-
+    
+    vcsRoot(Discovery)
     features {
         dockerRegistry {
             id = "PROJECT_EXT_5"

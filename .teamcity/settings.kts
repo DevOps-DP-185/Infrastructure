@@ -11,6 +11,7 @@ version = "2019.2"
 
 project {
     
+    vcsRoot(Ansible)
     vcsRoot(Discovery)
     features {
         dockerRegistry {
@@ -117,8 +118,11 @@ object Discovery_DiscoveryBuild : BuildType({
 object Discovery : GitVcsRoot({
     name = "Discovery"
     url = "https://github.com/DevOps-DP-185/Discovery.git"
-    authMethod = password {
-        userName = "ArtemKulish"
-        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
+    }
+})
+
+object Ansible : GitVcsRoot({
+    name = "Ansible"
+    url = "https://github.com/DevOps-DP-185/Ansible.git"
     }
 })

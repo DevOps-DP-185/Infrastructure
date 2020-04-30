@@ -1,32 +1,117 @@
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
-
-/*
-The settings script is an entry point for defining a TeamCity
-project hierarchy. The script should contain a single call to the
-project() function with a Project instance or an init function as
-an argument.
-
-VcsRoots, BuildTypes, Templates, and subprojects can be
-registered inside the project using the vcsRoot(), buildType(),
-template(), and subProject() methods respectively.
-
-To debug settings scripts in command-line, run the
-
-    mvnDebug org.jetbrains.teamcity:teamcity-configs-maven-plugin:generate
-
-command and attach your debugger to the port 8000.
-
-To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
--> Tool Windows -> Maven Projects), find the generate task node
-(Plugins -> teamcity-configs -> teamcity-configs:generate), the
-'Debug' option is available in the context menu for the task.
-*/
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.MavenBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
+import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.dockerRegistry
+import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
 version = "2019.2"
 
 project {
-    vcsRoot(Discovery)
+
+    features {
+        dockerRegistry {
+            id = "PROJECT_EXT_5"
+            name = "Docker Registry"
+            url = "https://docker.io"
+            userName = "artemkulish"
+            password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
+        }
+    }
+
+    subProject(Discovery)   
 }
+
+object Discovery : Project({
+    name = "Discovery"
+
+    vcsRoot(Discovery)
+
+    buildType(Discovery_Deploy)
+    buildType(Discovery_DiscoveryBuild)
+})
+
+object Discovery_Deploy : BuildType({
+    name = "Deploy"
+
+    enablePersonalBuilds = false
+    type = BuildTypeSettings.Type.DEPLOYMENT
+    maxRunningBuilds = 1
+
+    vcs {
+        root(Discovery)
+    }
+
+    steps {
+        step {
+            type = "ssh-exec-runner"
+            param("jetbrains.buildServer.sshexec.command", "ls")
+            param("jetbrains.buildServer.deployer.targetUrl", "35.184.252.223")
+            param("jetbrains.buildServer.sshexec.authMethod", "DEFAULT_KEY")
+            param("jetbrains.buildServer.sshexec.keyFile", "/home/artemkulish123/")
+        }
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    dependencies {
+        snapshot(Discovery_DiscoveryBuild) {
+        }
+    }
+})
+
+object Discovery_DiscoveryBuild : BuildType({
+    name = "Build"
+
+    publishArtifacts = PublishMode.SUCCESSFUL
+
+    vcs {
+        root(Discovery)
+    }
+
+    steps {
+        maven {
+            goals = "clean package"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+            localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
+            jdkHome = "%env.JDK_11%"
+        }
+        dockerCommand {
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "artemkulish/demo4:discovery"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+        dockerCommand {
+            commandType = push {
+                namesAndTags = "artemkulish/demo4:discovery"
+            }
+            param("dockerfile.path", "Dockerfile")
+        }
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "PROJECT_EXT_5"
+            }
+        }
+    }
+})
 
 object Discovery : GitVcsRoot({
     name = "Discovery"

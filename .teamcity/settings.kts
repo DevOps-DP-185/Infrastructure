@@ -28,8 +28,10 @@ project {
 object Discovery : Project({
     name = "Discovery"
 
-    vcsRoot(Discovery)
-
+    vcs {
+        root(Discovery)
+    }
+    
     buildType(Discovery_Deploy)
     buildType(Discovery_DiscoveryBuild)
 })

@@ -6,7 +6,6 @@ version = "2019.2"
 project {
     vcsRoot(Something)
     vcsRoot(Discovery)
-    vcsRoot(Gateway)
     subProject(Test)       
 }
 

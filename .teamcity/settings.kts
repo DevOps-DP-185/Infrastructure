@@ -36,7 +36,7 @@ object Test : Project({
 })
 
 object Payment : Project({
-    name = "Test"
+    name = "Payment"
     
     vcsRoot(Payment)
     buildType(Payment)

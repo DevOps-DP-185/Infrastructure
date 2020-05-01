@@ -11,6 +11,7 @@ version = "2019.2"
 
 project {
     subProject(Test) 
+    subProject(Test_1)
     
     features {
         dockerRegistry {
@@ -34,6 +35,10 @@ object Test : Project({
     buildType(Test_Build)
 })
 
+object Test_1 : Project({
+    name = "Test_1"
+    
+})
 
 /******************************************
 *----------------BUILD--------------------*

@@ -7,7 +7,12 @@ project {
     vcsRoot(Something)
     vcsRoot(Discovery)
     vcsRoot(Gateway)
+    subProject(Test)       
 }
+
+object Test : Project({
+    name = "Test"
+})
 
 object Something : GitVcsRoot({
     name = "Something"

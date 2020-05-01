@@ -95,7 +95,7 @@ object Test_Build : BuildType({
     }
 })
 
-object Payment_Build : BuildType({
+object Payment : BuildType({
     name = "Build"
 
     vcs {

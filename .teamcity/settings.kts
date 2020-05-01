@@ -44,6 +44,7 @@ object Test_Build : BuildType({
         maven {
             goals = "clean package"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
+            mavenVersion = bundled_3_1()
             localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
             jdkHome = "%env.JDK_11%"
         }

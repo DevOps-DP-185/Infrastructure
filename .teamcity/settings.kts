@@ -28,6 +28,55 @@ object Test : Project({
     name = "Test"
     
     vcsRoot(Gateway)
+    buildType(Test_Build)
+})
+
+object Test_Build : BuildType({
+    name = "Build"
+
+    publishArtifacts = PublishMode.SUCCESSFUL
+
+    vcs {
+        root(Gateway)
+    }
+
+    steps {
+        maven {
+            goals = "clean package"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+            localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
+            jdkHome = "%env.JDK_11%"
+        }
+        dockerCommand {
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "artemkulish/demo4:gateway"
+                commandArgs = "--pull"
+            }
+            param("dockerImage.platform", "linux")
+        }
+        dockerCommand {
+            commandType = push {
+                namesAndTags = "artemkulish/demo4:gateway"
+            }
+            param("dockerfile.path", "Dockerfile")
+        }
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "Demo_4"
+            }
+        }
+    }
 })
 
 object Something : GitVcsRoot({

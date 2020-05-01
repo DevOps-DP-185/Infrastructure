@@ -6,6 +6,7 @@ version = "2019.2"
 project {
     vcsRoot(Something)
     vcsRoot(Discovery)
+    vcsRoot(Gateway)
 }
 
 object Something : GitVcsRoot({
@@ -16,4 +17,13 @@ object Something : GitVcsRoot({
 object Discovery : GitVcsRoot({
     name = "Discovery"
     url = "https://github.com/DevOps-DP-185/Discovery.git"
+})
+
+object Gateway : GitVcsRoot({
+    name = "Gateway"
+    url = "https://github.com/DevOps-DP-185/Gateway.git"
+    authMethod = password {
+        userName = "ArtemKulish"
+        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
+    }
 })

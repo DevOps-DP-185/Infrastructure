@@ -11,7 +11,6 @@ version = "2019.2"
 
 project {
     subProject(Test) 
-    subProject(Payment)
     
     features {
         dockerRegistry {
@@ -35,12 +34,6 @@ object Test : Project({
     buildType(Test_Build)
 })
 
-object Payment : Project({
-    name = "Payment"
-    
-    vcsRoot(New)
-    buildType(Payment)
-})
 
 /******************************************
 *----------------BUILD--------------------*
@@ -95,50 +88,6 @@ object Test_Build : BuildType({
     }
 })
 
-object Payment : BuildType({
-    name = "Build"
-
-    vcs {
-        root(New)
-    }
-
-    steps {
-        maven {
-            goals = "clean package"
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
-            localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
-            jdkHome = "%env.JDK_11%"
-        }
-        dockerCommand {
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-                namesAndTags = "artemkulish/demo4:payment"
-            }
-            param("dockerImage.platform", "linux")
-        }
-        dockerCommand {
-            commandType = push {
-                namesAndTags = "artemkulish/demo4:payment"
-            }
-            param("dockerfile.path", "Dockerfile")
-        }
-    }
-
-    triggers {
-        vcs {
-        }
-    }
-
-    features {
-        dockerSupport {
-            loginToRegistry = on {
-                dockerRegistryId = "Demo_4"
-            }
-        }
-    }
-})
 
 /******************************************
 *--------------WEB_HOOKS------------------*
@@ -153,11 +102,3 @@ object Gateway : GitVcsRoot({
     }
 })
 
-object New : GitVcsRoot({
-    name = "New"
-    url = "https://github.com/DevOps-DP-185/Payment.git"
-    authMethod = password {
-        userName = "ArtemKulish"
-        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
-    }
-})

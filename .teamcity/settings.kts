@@ -43,6 +43,28 @@ object Payment : Project({
 })
 
 /******************************************
+*--------------WEB_HOOKS------------------*
+******************************************/
+
+object Gateway : GitVcsRoot({
+    name = "Gateway"
+    url = "https://github.com/DevOps-DP-185/Gateway.git"
+    authMethod = password {
+        userName = "ArtemKulish"
+        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
+    }
+})
+
+object Payment : GitVcsRoot({
+    name = "Payment"
+    url = "https://github.com/DevOps-DP-185/Payment.git"
+    authMethod = password {
+        userName = "ArtemKulish"
+        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
+    }
+})
+
+/******************************************
 *----------------BUILD--------------------*
 ******************************************/
 
@@ -140,24 +162,3 @@ object Payment_Build : BuildType({
     }
 })
 
-/******************************************
-*--------------WEB_HOOKS------------------*
-******************************************/
-
-object Gateway : GitVcsRoot({
-    name = "Gateway"
-    url = "https://github.com/DevOps-DP-185/Gateway.git"
-    authMethod = password {
-        userName = "ArtemKulish"
-        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
-    }
-})
-
-object Payment : GitVcsRoot({
-    name = "Payment"
-    url = "https://github.com/DevOps-DP-185/Payment.git"
-    authMethod = password {
-        userName = "ArtemKulish"
-        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
-    }
-})

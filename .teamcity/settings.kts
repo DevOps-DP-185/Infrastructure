@@ -40,6 +40,7 @@ object Test_1 : Project({
     name = "Test_1"
     
     vcsRoot(Payment)
+    buildType(Test_Payment)
 })
 
 object Test_2 : Project({
@@ -47,6 +48,7 @@ object Test_2 : Project({
     
     vcsRoot(Discovery)
 })
+
 
 /******************************************
 *----------------BUILD--------------------*
@@ -82,6 +84,51 @@ object Test_Build : BuildType({
         dockerCommand {
             commandType = push {
                 namesAndTags = "artemkulish/demo4:gateway"
+            }
+            param("dockerfile.path", "Dockerfile")
+        }
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        dockerSupport {
+            loginToRegistry = on {
+                dockerRegistryId = "Demo_4"
+            }
+        }
+    }
+})
+
+object Test_Payment : BuildType({
+    name = "Build"
+
+    vcs {
+        root(Payment)
+    }
+
+    steps {
+        maven {
+            goals = "clean package"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+            localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
+            jdkHome = "%env.JDK_11%"
+        }
+        dockerCommand {
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                namesAndTags = "artemkulish/demo4:payment"
+            }
+            param("dockerImage.platform", "linux")
+        }
+        dockerCommand {
+            commandType = push {
+                namesAndTags = "artemkulish/demo4:payment"
             }
             param("dockerfile.path", "Dockerfile")
         }

@@ -38,30 +38,8 @@ object Test : Project({
 object Payment : Project({
     name = "Payment"
     
-    vcsRoot(Payment)
+    vcsRoot(New)
     buildType(Payment)
-})
-
-/******************************************
-*--------------WEB_HOOKS------------------*
-******************************************/
-
-object Gateway : GitVcsRoot({
-    name = "Gateway"
-    url = "https://github.com/DevOps-DP-185/Gateway.git"
-    authMethod = password {
-        userName = "ArtemKulish"
-        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
-    }
-})
-
-object Payment : GitVcsRoot({
-    name = "Payment"
-    url = "https://github.com/DevOps-DP-185/Payment.git"
-    authMethod = password {
-        userName = "ArtemKulish"
-        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
-    }
 })
 
 /******************************************
@@ -121,7 +99,7 @@ object Payment_Build : BuildType({
     name = "Build"
 
     vcs {
-        root(Payment)
+        root(New)
     }
 
     steps {
@@ -162,3 +140,24 @@ object Payment_Build : BuildType({
     }
 })
 
+/******************************************
+*--------------WEB_HOOKS------------------*
+******************************************/
+
+object Gateway : GitVcsRoot({
+    name = "Gateway"
+    url = "https://github.com/DevOps-DP-185/Gateway.git"
+    authMethod = password {
+        userName = "ArtemKulish"
+        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
+    }
+})
+
+object New : GitVcsRoot({
+    name = "New"
+    url = "https://github.com/DevOps-DP-185/Payment.git"
+    authMethod = password {
+        userName = "ArtemKulish"
+        password = "credentialsJSON:91a788d6-72b3-405f-a9df-03389f20d48c"
+    }
+})

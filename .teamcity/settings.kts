@@ -12,6 +12,7 @@ version = "2019.2"
 project {
     subProject(Test) 
     subProject(Test_1)
+    subProject(Payment)
     
     features {
         dockerRegistry {
@@ -39,6 +40,11 @@ object Test_1 : Project({
     name = "Test_1"
     
     vcsRoot(Payment)
+})
+
+object Payment : Project({
+    name = "Test_1"
+    
 })
 
 /******************************************

@@ -43,7 +43,7 @@ object Test_1 : Project({
 })
 
 object Payment : Project({
-    name = "Test_1"
+    name = "Payment"
     
 })
 

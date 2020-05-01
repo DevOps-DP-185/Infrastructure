@@ -12,7 +12,8 @@ version = "2019.2"
 project {
     vcsRoot(Something)
     vcsRoot(Discovery)
-    subProject(Test)     
+    subProject(Gateway) 
+    
     features {
         dockerRegistry {
             id = "Demo_4"
@@ -24,8 +25,8 @@ project {
     }
 }
 
-object Test : Project({
-    name = "Test"
+object Gateway : Project({
+    name = "Gateway"
     
     vcsRoot(Gateway)
     buildType(Test_Build)

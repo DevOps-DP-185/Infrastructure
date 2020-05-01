@@ -12,6 +12,8 @@ project {
 
 object Test : Project({
     name = "Test"
+    
+    vcsRoot(Gateway)
 })
 
 object Something : GitVcsRoot({

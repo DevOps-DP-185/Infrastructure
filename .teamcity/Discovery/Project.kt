@@ -1,7 +1,7 @@
 package Discovery
 
 import Discovery.buildTypes.*
-import Discovery.vcsRoots.*
+import Discovery_vcs.vcsRoots.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 

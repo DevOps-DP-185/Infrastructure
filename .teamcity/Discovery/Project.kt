@@ -11,6 +11,6 @@ object Project : Project({
 
     vcsRoot(Discovery_vcs)
 
-    buildType(Discovery_Deploy)
     buildType(Discovery_Build)
+    buildType(Discovery_Deploy)
 })

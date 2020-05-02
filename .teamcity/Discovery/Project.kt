@@ -9,7 +9,7 @@ object Project : Project({
     id("Discovery")
     name = "Discovery"
 
-    vcsRoot(Discovery)
+    vcsRoot(Discovery_vcs)
 
     buildType(Discovery_Deploy)
     buildType(Discovery_Build)

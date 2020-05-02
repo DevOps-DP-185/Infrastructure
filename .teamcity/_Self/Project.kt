@@ -1,14 +1,11 @@
 package _Self
 
-import _Self.vcsRoots.*
+//import _Self.vcsRoots.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.dockerRegistry
 
 object Project : Project({
-    subProject(Discovery.Project) 
-    subProject(Payment.Project)
-    subProject(Gateway.Project)
     
     features {
         dockerRegistry {

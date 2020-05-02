@@ -4,7 +4,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
 object Discovery_vcs : GitVcsRoot({
-    name = "Discovery"
+    name = "Discovery_vcs"
     url = "https://github.com/DevOps-DP-185/Discovery.git"
     authMethod = password {
         userName = "ArtemKulish"

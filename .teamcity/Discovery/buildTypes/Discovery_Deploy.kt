@@ -11,7 +11,7 @@ object Discovery_Deploy : BuildType({
     maxRunningBuilds = 1
 
     vcs {
-        root(Discovery)
+        root(Discovery_vcs)
     }
 
     steps {

@@ -1,4 +1,4 @@
-package Discovery.vcsRoots
+package Discovery_vcs.vcsRoots
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot

@@ -6,7 +6,9 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.dockerRegistry
 
 object Project : Project({
-    
+
+    subProject(Discovery.Project) 
+
     features {
         dockerRegistry {
             id = "Demo_4"

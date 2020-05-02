@@ -11,7 +11,7 @@ object Discovery_Build : BuildType({
     name = "Build"
 
     vcs {
-        root(Discovery_vcs)
+        root(Discovery.vcsRoots.Discovery_vcs)
     }
 
     steps {

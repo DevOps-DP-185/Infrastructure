@@ -20,9 +20,4 @@ object Payment_Database_Update : BuildType({
             """.trimIndent()
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
 })

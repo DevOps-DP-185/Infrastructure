@@ -20,9 +20,4 @@ object Payment_Database_Rollback : BuildType({
             """.trimIndent()
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
 })

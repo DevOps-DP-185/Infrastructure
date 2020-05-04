@@ -5,6 +5,7 @@ sudo apt upgrade -y
 
 sudo apt install git -y
 sudo apt install maven -y
+sudo apt install postgresql-client -y
 
 #Install Java 8
 sudo apt install apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common -y

@@ -8,7 +8,7 @@ object Payment_Database_Update : BuildType({
     name = "Database_Update"
 
     vcs {
-        root(vcs)
+        root(Payment.vcsRoots.Payment_vcs)
     }
 
     steps {

@@ -8,7 +8,7 @@ object Payment_Database_Rollback : BuildType({
     name = "Database_Rollback"
 
     vcs {
-        root(vcs)
+        root(Payment.vcsRoots.Payment_vcs)
     }
 
     steps {

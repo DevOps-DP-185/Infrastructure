@@ -13,4 +13,6 @@ object Project : Project({
 
     buildType(Payment_Build)
     buildType(Payment_Deploy)
+    buildType(Payment_Database_Update)
+    buildType(Payment_Database_Rollback)
 })

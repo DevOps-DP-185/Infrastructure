@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object Payment_Database_Update : BuildType({
-    name = "Database_Update"
+    name = "DB_Update"
 
     vcs {
         root(Payment.vcsRoots.Payment_vcs)

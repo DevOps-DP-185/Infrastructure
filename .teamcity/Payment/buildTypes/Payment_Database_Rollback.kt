@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object Payment_Database_Rollback : BuildType({
-    name = "Database_Rollback"
+    name = "DB_Rollback"
 
     vcs {
         root(Payment.vcsRoots.Payment_vcs)

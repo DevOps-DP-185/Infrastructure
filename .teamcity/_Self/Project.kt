@@ -13,6 +13,7 @@ object Project : Project({
     subProject(Messaging.Project)
     subProject(Gateway.Project)
     subProject(Simulation.Project)
+    subProject(Identity.Project)
 
     features {
         dockerRegistry {

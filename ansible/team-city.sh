@@ -112,3 +112,5 @@ sudo wget https://github.com/liquibase/liquibase/releases/download/v3.8.8/liquib
 sudo tar -xvf liquibase-3.8.8.tar.gz
 echo "export PATH=/opt/liquibase:$PATH" >> ~/.bashrc && source ~/.bashrc
 liquibase --versiont
+
+

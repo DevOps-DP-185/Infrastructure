@@ -45,7 +45,7 @@ changeBuildType(RelativeId("Identity_Build")) {
             goals = "clean install"
             pomLocation = "./identity-starter/pom.xml"
         }
-        insert(4) {
+        insert(1) {
             maven {
                 goals = "clean package"
                 pomLocation = "./identity-service/pom.xml"

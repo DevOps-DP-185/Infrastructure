@@ -1,18 +1,18 @@
-package Vehicle
+package Identity
 
-import Vehicle.buildTypes.*
-import Vehicle.vcsRoots.*
+import Identity.buildTypes.*
+import Identity.vcsRoots.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 
 object Project : Project({
-    id("Vehicle")
-    name = "Vehicle"
+    id("Identity")
+    name = "Identity"
 
-    vcsRoot(Vehicle_vcs)
+    vcsRoot(Identity_vcs)
 
-    buildType(Vehicle_Build)
-    buildType(Vehicle_Deploy)
-    buildType(Vehicle_Database_Update)
-    buildType(Vehicle_Database_Rollback)    
+    buildType(Identity_Build)
+    buildType(Identity_Deploy)
+    buildType(Identity_Database_Update)
+    buildType(Identity_Database_Rollback)    
 })

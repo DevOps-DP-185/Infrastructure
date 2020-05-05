@@ -11,6 +11,7 @@ object Project : Project({
     subProject(Vehicle.Project) 
     subProject(Trip.Project) 
     subProject(Messaging.Project)
+    subProject(Gateway.Project)
 
     features {
         dockerRegistry {

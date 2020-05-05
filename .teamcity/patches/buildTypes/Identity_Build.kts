@@ -43,20 +43,27 @@ changeBuildType(RelativeId("Identity_Build")) {
         }
     }
     steps {
-        insert(0) {
+        items.removeAt(0)
+        update<ScriptBuildStep>(0) {
+            name = ""
+            scriptContent = """
+                cd ./identity-starter/pom.xml
+                sudo mvn clean install
+            """.trimIndent()
+        }
+        insert(1) {
             script {
                 scriptContent = """
-                    cd ./identity-starter/pom.xml
-                    sudo mvn clean install
+                    cd ./identity-service/pom.xml
+                    sudo mvn clean package
                 """.trimIndent()
             }
         }
-        update<MavenBuildStep>(1) {
-            pomLocation = "./identity-service/pom.xml"
-            runnerArgs = ""
-            localRepoScope = MavenBuildStep.RepositoryScope.AGENT
-        }
-        update<ScriptBuildStep>(2) {
+        insert(2) {
+            script {
+                name = "Add sumo_credentials.txt"
+                scriptContent = "cp /home/sumo_credentials.txt ./"
+            }
         }
         update<DockerCommandStep>(3) {
         }

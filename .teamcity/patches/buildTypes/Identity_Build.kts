@@ -45,7 +45,7 @@ changeBuildType(RelativeId("Identity_Build")) {
     steps {
         items.removeAt(0)
         update<ScriptBuildStep>(0) {
-            name = ""
+            name = "Starter Build"
             scriptContent = """
                 cd ./identity-starter/pom.xml
                 sudo mvn clean install

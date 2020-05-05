@@ -53,6 +53,7 @@ changeBuildType(RelativeId("Identity_Build")) {
         }
         insert(1) {
             script {
+                name = "Identity Build"
                 scriptContent = """
                     cd ./identity-service/pom.xml
                     sudo mvn clean package

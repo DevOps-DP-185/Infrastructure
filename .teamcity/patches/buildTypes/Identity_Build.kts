@@ -1,7 +1,9 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.DockerCommandStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.MavenBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
@@ -42,7 +44,7 @@ changeBuildType(RelativeId("Identity_Build")) {
     }
     steps {
         update<MavenBuildStep>(0) {
-            goals = "clean install"
+            goals = "install"
             pomLocation = "./identity-starter/pom.xml"
         }
         insert(1) {
@@ -51,6 +53,12 @@ changeBuildType(RelativeId("Identity_Build")) {
                 pomLocation = "./identity-service/pom.xml"
                 jdkHome = "%env.JDK_11%"
             }
+        }
+        update<ScriptBuildStep>(2) {
+        }
+        update<DockerCommandStep>(3) {
+        }
+        update<DockerCommandStep>(4) {
         }
     }
 }

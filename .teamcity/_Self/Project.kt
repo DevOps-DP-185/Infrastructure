@@ -8,6 +8,7 @@ object Project : Project({
 
     subProject(Discovery.Project) 
     subProject(Payment.Project) 
+    subProject(Vehicle.Project) 
 
     features {
         dockerRegistry {

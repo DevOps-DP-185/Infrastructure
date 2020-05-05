@@ -66,6 +66,14 @@ changeBuildType(RelativeId("Identity_Build")) {
             }
         }
         update<DockerCommandStep>(3) {
+            commandType = build {
+                source = file {
+                    path = "./identity-service/Dockerfile"
+                }
+                contextDir = ""
+                namesAndTags = "artemkulish/demo4:identity"
+                commandArgs = "--pull"
+            }
         }
         update<DockerCommandStep>(4) {
         }

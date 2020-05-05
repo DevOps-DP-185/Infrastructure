@@ -1,4 +1,4 @@
-package Vehicle.buildTypes
+package Trip.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
@@ -7,11 +7,11 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
-object Vehicle_Build : BuildType({
+object Trip_Build : BuildType({
     name = "Build"
 
     vcs {
-        root(Vehicle.vcsRoots.Vehicle_vcs)
+        root(Trip.vcsRoots.Trip_vcs)
     }
 
     steps {
@@ -26,13 +26,13 @@ object Vehicle_Build : BuildType({
                 source = file {
                     path = "Dockerfile"
                 }
-                namesAndTags = "artemkulish/demo4:vehicle"
+                namesAndTags = "artemkulish/demo4:trip"
             }
             param("dockerImage.platform", "linux")
         }
         dockerCommand {
             commandType = push {
-                namesAndTags = "artemkulish/demo4:vehicle"
+                namesAndTags = "artemkulish/demo4:trip"
             }
             param("dockerfile.path", "Dockerfile")
         }

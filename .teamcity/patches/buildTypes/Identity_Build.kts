@@ -76,6 +76,7 @@ changeBuildType(RelativeId("Identity_Build")) {
             }
         }
         update<DockerCommandStep>(4) {
+            name = "Docker Push"
             commandType = push {
                 namesAndTags = "artemkulish/demo4:identity"
                 removeImageAfterPush = true

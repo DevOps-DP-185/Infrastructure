@@ -65,17 +65,22 @@ changeBuildType(RelativeId("Identity_Build")) {
                 scriptContent = "cp /home/sumo_credentials.txt ./"
             }
         }
-        update<DockerCommandStep>(3) {
-            commandType = build {
-                source = file {
-                    path = "./identity-service/Dockerfile"
-                }
-                contextDir = ""
-                namesAndTags = "artemkulish/demo4:identity"
-                commandArgs = "--pull"
+        insert(3) {
+            script {
+                name = "Docker Build"
+                scriptContent = """
+                    cd ./identity-service/
+                    sudo docker build -t artemkulish/demo4:identity .
+                """.trimIndent()
             }
         }
         update<DockerCommandStep>(4) {
+            commandType = push {
+                namesAndTags = "artemkulish/demo4:identity"
+                removeImageAfterPush = true
+            }
+            param("dockerImage.platform", "")
         }
+        items.removeAt(5)
     }
 }

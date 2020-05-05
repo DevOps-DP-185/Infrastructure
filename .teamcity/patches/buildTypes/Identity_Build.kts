@@ -43,17 +43,18 @@ changeBuildType(RelativeId("Identity_Build")) {
         }
     }
     steps {
-        update<MavenBuildStep>(0) {
-            goals = "clean install"
-            pomLocation = "./identity-starter/pom.xml"
-            mavenVersion = bundled_3_1()
-        }
-        insert(1) {
-            maven {
-                goals = "clean package"
-                pomLocation = "./identity-service/pom.xml"
-                jdkHome = "%env.JDK_11%"
+        insert(0) {
+            script {
+                scriptContent = """
+                    cd ./identity-starter/pom.xml
+                    sudo mvn clean install
+                """.trimIndent()
             }
+        }
+        update<MavenBuildStep>(1) {
+            pomLocation = "./identity-service/pom.xml"
+            runnerArgs = ""
+            localRepoScope = MavenBuildStep.RepositoryScope.AGENT
         }
         update<ScriptBuildStep>(2) {
         }

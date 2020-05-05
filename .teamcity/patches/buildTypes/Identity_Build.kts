@@ -44,8 +44,9 @@ changeBuildType(RelativeId("Identity_Build")) {
     }
     steps {
         update<MavenBuildStep>(0) {
-            goals = "install"
+            goals = "clean install"
             pomLocation = "./identity-starter/pom.xml"
+            mavenVersion = bundled_3_1()
         }
         insert(1) {
             maven {

@@ -10,6 +10,7 @@ object Project : Project({
     subProject(Payment.Project) 
     subProject(Vehicle.Project) 
     subProject(Trip.Project) 
+    subProject(Messaging.Project)
 
     features {
         dockerRegistry {

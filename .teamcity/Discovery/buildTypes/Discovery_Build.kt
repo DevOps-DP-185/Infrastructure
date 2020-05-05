@@ -21,6 +21,10 @@ object Discovery_Build : BuildType({
             localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
             jdkHome = "%env.JDK_11%"
         }
+        script {
+            name = "Add sumo_credentials.txt"
+            scriptContent = "cp /home/sumo_credentials.txt ./"
+        }        
         dockerCommand {
             commandType = build {
                 source = file {

@@ -1,4 +1,4 @@
-package Payment.buildTypes
+package Simulation.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.dockerSupport
@@ -7,11 +7,11 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
-object Payment_Build : BuildType({
+object Simulation_Build : BuildType({
     name = "Build"
 
     vcs {
-        root(Payment.vcsRoots.Payment_vcs)
+        root(Simulation.vcsRoots.Simulation_vcs)
     }
 
     steps {
@@ -24,19 +24,19 @@ object Payment_Build : BuildType({
         script {
             name = "Add sumo_credentials.txt"
             scriptContent = "cp /home/sumo_credentials.txt ./"
-        }
+        }     
         dockerCommand {
             commandType = build {
                 source = file {
                     path = "Dockerfile"
                 }
-                namesAndTags = "artemkulish/demo4:payment"
+                namesAndTags = "artemkulish/demo4:simulation"
             }
             param("dockerImage.platform", "linux")
         }
         dockerCommand {
             commandType = push {
-                namesAndTags = "artemkulish/demo4:payment"
+                namesAndTags = "artemkulish/demo4:simulation"
             }
             param("dockerfile.path", "Dockerfile")
         }

@@ -18,8 +18,13 @@ object Gateway_Build : BuildType({
         maven {
             goals = "clean package"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
+            mavenVersion = bundled_3_1()
             localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
             jdkHome = "%env.JDK_11%"
+        }
+        script {
+            name = "Add sumo_credentials.txt"
+            scriptContent = "cp /home/sumo_credentials.txt ./"
         }
         dockerCommand {
             commandType = build {

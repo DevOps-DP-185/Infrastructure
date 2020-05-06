@@ -61,13 +61,14 @@ changeBuildType(RelativeId("Identity_Build")) {
         update<ScriptBuildStep>(2) {
         }
         update<DockerCommandStep>(3) {
+            name = "Docker Build"
             commandType = build {
                 source = file {
                     path = "identity-service/Dockerfile"
                 }
                 contextDir = ""
                 namesAndTags = ""
-                commandArgs = ""
+                commandArgs = "--pull"
             }
             param("dockerImage.platform", "")
         }

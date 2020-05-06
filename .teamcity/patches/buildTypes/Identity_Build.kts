@@ -71,6 +71,16 @@ changeBuildType(RelativeId("Identity_Build")) {
             }
             param("dockerImage.platform", "")
         }
-        items.removeAt(4)
+        update<DockerCommandStep>(4) {
+            name = "New build step"
+            commandType = build {
+                source = file {
+                    path = "identity-service/Dockerfile"
+                }
+                contextDir = ""
+                namesAndTags = ""
+                commandArgs = ""
+            }
+        }
     }
 }

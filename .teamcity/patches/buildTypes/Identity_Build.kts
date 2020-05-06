@@ -68,7 +68,7 @@ changeBuildType(RelativeId("Identity_Build")) {
                     path = "identity-service/Dockerfile"
                 }
                 contextDir = ""
-                namesAndTags = ""
+                namesAndTags = "artemkulish/demo4:identity"
                 commandArgs = "--pull"
             }
             param("dockerImage.platform", "")

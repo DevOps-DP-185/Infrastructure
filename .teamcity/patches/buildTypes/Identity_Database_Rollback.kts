@@ -1,7 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
 
@@ -22,8 +22,13 @@ changeBuildType(RelativeId("Identity_Database_Rollback")) {
         }
     }
     steps {
-        update<ScriptBuildStep>(0) {
-            scriptContent = "cd ./identity_service/ && sudo mvn liquibase:rollback -Dliquibase.rollbackCount=1"
+        insert(0) {
+            maven {
+                name = "Identity_Database_Rollback"
+                goals = "liquibase:rollback -Dliquibase.rollbackCount=1"
+                pomLocation = "./identity-service/pom.xml"
+            }
         }
+        items.removeAt(1)
     }
 }

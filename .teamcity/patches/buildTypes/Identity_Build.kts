@@ -59,6 +59,7 @@ changeBuildType(RelativeId("Identity_Build")) {
             }
         }
         update<ScriptBuildStep>(2) {
+            scriptContent = "cp /home/sumo_credentials.txt ./identity-service/"
         }
         update<DockerCommandStep>(3) {
             name = "Docker Build"

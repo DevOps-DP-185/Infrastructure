@@ -61,15 +61,6 @@ changeBuildType(RelativeId("Identity_Build")) {
         update<ScriptBuildStep>(2) {
         }
         update<DockerCommandStep>(3) {
-            name = "Docker Push"
-            commandType = push {
-                namesAndTags = "artemkulish/demo4:identity"
-                removeImageAfterPush = true
-            }
-            param("dockerImage.platform", "")
-            param("dockerfile.path", "")
-        }
-        update<DockerCommandStep>(4) {
             commandType = build {
                 source = file {
                     path = "identity-service/Dockerfile"
@@ -78,6 +69,8 @@ changeBuildType(RelativeId("Identity_Build")) {
                 namesAndTags = ""
                 commandArgs = ""
             }
+            param("dockerImage.platform", "")
         }
+        items.removeAt(4)
     }
 }

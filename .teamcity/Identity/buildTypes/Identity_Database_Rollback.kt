@@ -12,13 +12,10 @@ object Identity_Database_Rollback : BuildType({
     }
 
     steps {
-        script {
-            name = "Identity_Database_Rollback"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            scriptContent = """
-                cd ./identity_service/
-                sudo mvn liquibase:rollback -Dliquibase.rollbackCount=1
-            """.trimIndent()
+        maven {
+            name = "Identity_Database_Update"
+            goals = "liquibase:rollback -Dliquibase.rollbackCount=1"
+            pomLocation = "./identity-service/pom.xml"
         }
     }
 })

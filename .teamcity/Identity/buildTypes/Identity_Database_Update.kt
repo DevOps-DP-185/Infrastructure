@@ -12,13 +12,10 @@ object Identity_Database_Update : BuildType({
     }
 
     steps {
-        script {
+        maven {
             name = "Identity_Database_Update"
-            executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            scriptContent = """
-                cd ./identity_service/
-                sudo mvn liquibase:update
-            """.trimIndent()
+            goals = "liquibase:update"
+            pomLocation = "./identity-service/pom.xml"
         }
     }
 })

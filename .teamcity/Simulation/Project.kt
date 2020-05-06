@@ -13,6 +13,4 @@ object Project : Project({
 
     buildType(Simulation_Build)
     buildType(Simulation_Deploy)
-    buildType(Simulation_Database_Update)
-    buildType(Simulation_Database_Rollback)   
 })

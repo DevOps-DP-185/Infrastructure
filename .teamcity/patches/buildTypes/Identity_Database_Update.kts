@@ -1,7 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
-import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
 
@@ -22,8 +22,13 @@ changeBuildType(RelativeId("Identity_Database_Update")) {
         }
     }
     steps {
-        update<ScriptBuildStep>(0) {
-            scriptContent = "cd ./identity_service/ && sudo mvn liquibase:update"
+        insert(0) {
+            maven {
+                name = "Identity_Database_Update"
+                goals = "liquibase:update"
+                pomLocation = "./identity-service/pom.xml"
+            }
         }
+        items.removeAt(1)
     }
 }

@@ -51,18 +51,14 @@ changeBuildType(RelativeId("Identity_Build")) {
             localRepoScope = MavenBuildStep.RepositoryScope.AGENT
             jdkHome = ""
         }
-        update<ScriptBuildStep>(1) {
-            name = "Identity Build"
-            scriptContent = """
-                cd ./identity-service/pom.xml
-                sudo mvn clean package
-            """.trimIndent()
-        }
-        insert(2) {
-            script {
-                name = "Add sumo_credentials.txt"
-                scriptContent = "cp /home/sumo_credentials.txt ./"
+        insert(1) {
+            maven {
+                name = "Identity Build"
+                goals = "mvn clean package"
+                pomLocation = "./identity-service/pom.xml"
             }
+        }
+        update<ScriptBuildStep>(2) {
         }
         insert(3) {
             script {

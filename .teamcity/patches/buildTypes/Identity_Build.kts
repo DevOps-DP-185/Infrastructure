@@ -75,10 +75,6 @@ changeBuildType(RelativeId("Identity_Build")) {
         }
         update<DockerCommandStep>(4) {
             name = "Docker Push"
-            commandType = push {
-                namesAndTags = "artem"
-                removeImageAfterPush = true
-            }
             param("dockerfile.path", "identity-service/Dockerfile")
         }
     }

@@ -43,22 +43,20 @@ changeBuildType(RelativeId("Identity_Build")) {
         }
     }
     steps {
-        items.removeAt(0)
-        update<ScriptBuildStep>(0) {
+        update<MavenBuildStep>(0) {
             name = "Starter Build"
-            scriptContent = """
-                cd ./identity-starter/pom.xml
-                sudo mvn clean install
-            """.trimIndent()
+            goals = "mvn clean install"
+            pomLocation = "./identity-starter/pom.xml"
+            runnerArgs = ""
+            localRepoScope = MavenBuildStep.RepositoryScope.AGENT
+            jdkHome = ""
         }
-        insert(1) {
-            script {
-                name = "Identity Build"
-                scriptContent = """
-                    cd ./identity-service/pom.xml
-                    sudo mvn clean package
-                """.trimIndent()
-            }
+        update<ScriptBuildStep>(1) {
+            name = "Identity Build"
+            scriptContent = """
+                cd ./identity-service/pom.xml
+                sudo mvn clean package
+            """.trimIndent()
         }
         insert(2) {
             script {
@@ -82,6 +80,7 @@ changeBuildType(RelativeId("Identity_Build")) {
                 removeImageAfterPush = true
             }
             param("dockerImage.platform", "")
+            param("dockerfile.path", "")
         }
         items.removeAt(5)
     }

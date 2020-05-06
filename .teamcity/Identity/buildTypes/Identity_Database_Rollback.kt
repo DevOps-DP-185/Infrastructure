@@ -16,6 +16,7 @@ object Identity_Database_Rollback : BuildType({
             name = "Identity_Database_Rollback"
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
             scriptContent = """
+                cd ./identity_service/
                 sudo mvn liquibase:rollback -Dliquibase.rollbackCount=1
             """.trimIndent()
         }

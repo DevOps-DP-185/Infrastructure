@@ -60,16 +60,7 @@ changeBuildType(RelativeId("Identity_Build")) {
         }
         update<ScriptBuildStep>(2) {
         }
-        insert(3) {
-            script {
-                name = "Docker Build"
-                scriptContent = """
-                    cd ./identity-service/
-                    sudo docker build -t artemkulish/demo4:identity .
-                """.trimIndent()
-            }
-        }
-        update<DockerCommandStep>(4) {
+        update<DockerCommandStep>(3) {
             name = "Docker Push"
             commandType = push {
                 namesAndTags = "artemkulish/demo4:identity"
@@ -78,7 +69,7 @@ changeBuildType(RelativeId("Identity_Build")) {
             param("dockerImage.platform", "")
             param("dockerfile.path", "")
         }
-        update<DockerCommandStep>(5) {
+        update<DockerCommandStep>(4) {
             commandType = build {
                 source = file {
                     path = "identity-service/Dockerfile"

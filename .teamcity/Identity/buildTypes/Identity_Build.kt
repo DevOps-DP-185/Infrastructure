@@ -15,33 +15,38 @@ object Identity_Build : BuildType({
         root(Identity.vcsRoots.Identity_vcs)
     }
 
-    steps {
-        maven {
-            goals = "clean package"
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
-            localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
-            jdkHome = "%env.JDK_11%"
-        }
-        script {
-            name = "Add sumo_credentials.txt"
-            scriptContent = "cp /home/sumo_credentials.txt ./"
-        }
-        dockerCommand {
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-                namesAndTags = "artemkulish/demo4:identity"
+steps {
+    maven {
+        name = "Starter Build"
+        goals = "clean install"
+        pomLocation = "./identity-starter/pom.xml"
+    }
+    maven {
+        name = "Identity Build"
+        goals = "clean package"
+        pomLocation = "./identity-service/pom.xml"
+    }
+    script {
+        name = "Add sumo_credentials.txt"
+        scriptContent = "cp /home/sumo_credentials.txt ./identity-service/"
+    }
+    dockerCommand {
+        name = "Docker Build"
+        commandType = build {
+            source = file {
+                path = "identity-service/Dockerfile"
             }
-            param("dockerImage.platform", "linux")
-        }
-        dockerCommand {
-            commandType = push {
-                namesAndTags = "artemkulish/demo4:identity"
-            }
-            param("dockerfile.path", "Dockerfile")
+            namesAndTags = "artemkulish/demo4:identity"
         }
     }
+    dockerCommand {
+        name = "Docker Push"
+        commandType = push {
+            namesAndTags = "artemkulish/demo4:identity"
+        }
+        param("dockerfile.path", "identity-service/Dockerfile")
+    }
+}
 
     triggers {
         vcs {

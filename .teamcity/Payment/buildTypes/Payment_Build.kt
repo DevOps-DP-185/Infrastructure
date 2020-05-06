@@ -27,6 +27,7 @@ object Payment_Build : BuildType({
             scriptContent = "cp /home/sumo_credentials.txt ./"
         }
         dockerCommand {
+            name = "Docker Build"
             commandType = build {
                 source = file {
                     path = "Dockerfile"
@@ -36,6 +37,7 @@ object Payment_Build : BuildType({
             param("dockerImage.platform", "linux")
         }
         dockerCommand {
+            name = "Docker Push"
             commandType = push {
                 namesAndTags = "artemkulish/demo4:payment"
             }

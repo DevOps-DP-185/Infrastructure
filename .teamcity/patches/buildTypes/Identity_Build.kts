@@ -81,17 +81,5 @@ changeBuildType(RelativeId("Identity_Build")) {
             }
             param("dockerfile.path", "identity-service/Dockerfile")
         }
-        insert(5) {
-            dockerCommand {
-                name = "Docker Build (1)"
-                commandType = build {
-                    source = file {
-                        path = "identity-service/Dockerfile"
-                    }
-                    namesAndTags = "artemkulish/demo4:identity"
-                    commandArgs = "--pull"
-                }
-            }
-        }
     }
 }

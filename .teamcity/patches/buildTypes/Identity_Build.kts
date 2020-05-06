@@ -45,7 +45,7 @@ changeBuildType(RelativeId("Identity_Build")) {
     steps {
         update<MavenBuildStep>(0) {
             name = "Starter Build"
-            goals = "mvn clean install"
+            goals = "clean install"
             pomLocation = "./identity-starter/pom.xml"
             runnerArgs = ""
             localRepoScope = MavenBuildStep.RepositoryScope.AGENT

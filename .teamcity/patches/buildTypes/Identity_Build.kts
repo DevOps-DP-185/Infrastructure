@@ -54,7 +54,7 @@ changeBuildType(RelativeId("Identity_Build")) {
         insert(1) {
             maven {
                 name = "Identity Build"
-                goals = "mvn clean package"
+                goals = "clean package"
                 pomLocation = "./identity-service/pom.xml"
             }
         }

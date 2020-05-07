@@ -31,6 +31,7 @@ object Payment_Deploy : BuildType({
 
     dependencies {
         snapshot(Payment_Build) {
+            onDependencyCancel = FailureAction.CANCEL
         }
     }
 })

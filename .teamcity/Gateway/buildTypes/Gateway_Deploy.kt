@@ -31,6 +31,7 @@ object Gateway_Deploy : BuildType({
 
     dependencies {
         snapshot(Gateway_Build) {
+            onDependencyCancel = FailureAction.CANCEL
         }
     }
 })

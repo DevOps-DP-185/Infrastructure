@@ -31,6 +31,7 @@ object Vehicle_Deploy : BuildType({
 
     dependencies {
         snapshot(Vehicle_Build) {
+            onDependencyCancel = FailureAction.CANCEL
         }
     }
 })

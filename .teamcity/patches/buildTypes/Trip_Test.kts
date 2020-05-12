@@ -31,5 +31,11 @@ create(RelativeId("Trip"), BuildType({
         vcs {
         }
     }
+
+    dependencies {
+        snapshot(RelativeId("Trip_Build")) {
+            onDependencyCancel = FailureAction.CANCEL
+        }
+    }
 }))
 

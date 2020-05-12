@@ -57,3 +57,9 @@ resource "google_sql_database" "database" {
   name     = each.value
   instance = google_sql_database_instance.master.name
 }
+
+resource "local_file" "foo" {
+    content     = join( "\n", [google_sql_database_instance.master.private_ip_address, google_sql_user.users.name, google_sql_user.users.password] )
+
+    filename = "/home/pass/env.txt"
+}

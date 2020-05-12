@@ -2,7 +2,7 @@ variable "private_ip_range" {}
 
 variable "local_network_ip_range" {
     description = "Ip range for local network"
-    default = ["10.138.0.0/16", "10.20.0.0/24"]
+    default = ["10.128.0.0/16", "10.20.0.0/24"]
 }
 
 variable "shared_key" {}

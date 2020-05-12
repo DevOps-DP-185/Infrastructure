@@ -5,7 +5,7 @@ variable "shared_key" {
 
 variable "range_traffic" {
   description = "Range ip for vpn tunnel"
-  default = ["10.20.0.0/24", "10.138.0.0/20"]
+  default = ["10.20.0.0/24", "10.128.0.0/20"]
 }
 
 variable "network_selflink" {

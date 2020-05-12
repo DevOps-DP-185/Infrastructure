@@ -47,8 +47,6 @@ resource "google_compute_vpn_tunnel" "tunnel" {
   ]
 }
 
-//add 10.20.0.0/24
-
 resource "google_compute_route" "route" {
   name       = "route"
   network    = var.network_selflink

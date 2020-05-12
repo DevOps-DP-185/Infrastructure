@@ -12,7 +12,7 @@ variable "database_name" {
 
 variable "region" {
   description = "Region for CloudSQL"
-  default = "us-west1"
+  default = "us-central1"
 }
 
 variable "network_selflink" {

@@ -30,7 +30,7 @@ object Trip_Deploy : BuildType({
     }
 
     dependencies {
-        snapshot(Trip_Build) {
+        snapshot(Trip_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

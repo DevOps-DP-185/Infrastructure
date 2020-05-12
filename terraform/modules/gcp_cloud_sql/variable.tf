@@ -7,7 +7,7 @@ variable "apis" {
 variable "database_name" {
     description = "Database name for application"
     type = list(string)
-    default = [ "identity", "vehicle", "messaging", "payment", "trip"]    
+    default = [ "identity", "vehicle", "messaging", "payment", "trip", "simulator"]    
 }
 
 variable "region" {

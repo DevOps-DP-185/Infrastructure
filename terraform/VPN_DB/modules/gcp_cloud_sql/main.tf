@@ -47,9 +47,9 @@ resource "google_sql_database_instance" "master" {
 }
 
 resource "google_sql_user" "users" {
-  name     = "postgres"
+  name     = "%system.db_user%"
   instance = google_sql_database_instance.master.name
-  password = "postgres"
+  password = "%system.db_password%"
 }
 
 resource "google_sql_database" "database" {

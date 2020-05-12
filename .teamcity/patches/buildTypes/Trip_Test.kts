@@ -21,8 +21,9 @@ create(RelativeId("Trip"), BuildType({
 
     steps {
         maven {
-            goals = "clean test"
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
+            name = "Test"
+            goals = "-Dtest=RunScooterTests test"
+            jdkHome = "%env.JDK_11%"
         }
     }
 

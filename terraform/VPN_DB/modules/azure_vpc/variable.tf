@@ -1,5 +1,5 @@
 variable "region" {
-  default = "Central US"
+  default = "East US"
   description = "The region for all resource in Azure" 
 }
 

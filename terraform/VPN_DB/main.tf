@@ -5,13 +5,13 @@ provider "azurerm" {
 }
 
 provider "google" {
-  region    = "us-central1"
+  region    = "us-east1"
   version   = "=3.0.0"
 }
 
 provider "google-beta" {
-  region = "us-central1"
-  zone   = "us-central1-a"
+  region = "us-east1"
+  zone   = "us-east1-a"
   version = "=3.20"
 }
 
@@ -38,4 +38,22 @@ module "gcp_gateway" {
 
 module "gcp_cloud_sql" {
   source = "./modules/gcp_cloud_sql"
+}
+  
+ module "azure_vm" {
+  source = "./modules/azure_vm"
+
+  group_location = module.azure_vpc.group_location
+  group_name     = module.azure_vpc.group_name
+  subnet_id      = module.azure_vpc.subnet_id
+}
+
+module "application_gateway" {
+  source = "./modules/application_gateway"
+
+  group_location     = module.azure_vpc.group_location
+  group_name         = module.azure_vpc.group_name
+  network            = module.azure_vpc.network
+  private_ip_address = module.azure_vm.private_ip_address
+
 }

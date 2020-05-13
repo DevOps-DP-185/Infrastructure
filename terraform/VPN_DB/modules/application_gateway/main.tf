@@ -2,7 +2,7 @@ resource "azurerm_subnet" "frontend" {
   name                 = "frontend"
   resource_group_name  = var.group_name
   virtual_network_name = var.network
-  address_prefixes     = ["172.16.1.0/24"]
+  address_prefix       = "172.16.1.0/24"
 }
 
 resource "azurerm_public_ip" "gateway" {

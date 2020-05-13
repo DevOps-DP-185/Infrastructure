@@ -2,7 +2,7 @@
 // create resource group
 
 resource "azurerm_resource_group" "group" {
-  name     = "demo4"
+  name     = "demo5"
   location = var.region
 }
 

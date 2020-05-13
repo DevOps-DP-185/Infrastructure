@@ -43,9 +43,9 @@ resource "google_sql_database_instance" "master" {
 }
 
 resource "google_sql_user" "users" {
-  name     = "%system.db_user%"
+  name     = "var.database_username"
   instance = google_sql_database_instance.master.name
-  password = "%system.db_password%"
+  password = "var.database_password"
 }
 
 resource "google_sql_database" "database" {

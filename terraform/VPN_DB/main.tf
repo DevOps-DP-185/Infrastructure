@@ -39,3 +39,22 @@ module "gcp_gateway" {
 module "gcp_cloud_sql" {
   source = "./modules/gcp_cloud_sql"
 }
+  
+ module "azure_vm" {
+  source = "./modules/azure_vm"
+
+  wait_tunnel    = module.gcp_gateway.wait_tunnel
+  group_location = module.azure_vpc.group_location
+  group_name     = module.azure_vpc.group_name
+  subnet_id      = module.azure_vpc.subnet_id
+}
+
+module "application_gateway" {
+  source = "./modules/application_gateway"
+
+  group_location     = module.azure_vpc.group_location
+  group_name         = module.azure_vpc.group_name
+  network            = module.azure_vpc.network
+  private_ip_address = module.azure_vm.private_ip_address
+
+}

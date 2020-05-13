@@ -26,7 +26,7 @@ resource "azurerm_virtual_network_gateway" "gateway" {
   }
   
   lifecycle {
-    ignore_updates = true
+    ignore_changes = true
 }
 }
 

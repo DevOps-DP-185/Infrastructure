@@ -43,7 +43,6 @@ module "gcp_cloud_sql" {
  module "azure_vm" {
   source = "./modules/azure_vm"
 
-  wait_tunnel    = module.gcp_gateway.wait_tunnel
   group_location = module.azure_vpc.group_location
   group_name     = module.azure_vpc.group_name
   subnet_id      = module.azure_vpc.subnet_id

@@ -30,7 +30,7 @@ object Discovery_Deploy : BuildType({
     }
 
     dependencies {
-        snapshot(Discovery_Build) {
+        snapshot(Discovery_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

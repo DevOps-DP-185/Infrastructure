@@ -13,4 +13,5 @@ object Project : Project({
 
     buildType(Discovery_Build)
     buildType(Discovery_Deploy)
+    buildType(Discovery_Test)
 })

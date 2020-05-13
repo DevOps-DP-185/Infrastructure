@@ -30,7 +30,7 @@ object Simulation_Deploy : BuildType({
     }
 
     dependencies {
-        snapshot(Simulation_Build) {
+        snapshot(Simulation_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

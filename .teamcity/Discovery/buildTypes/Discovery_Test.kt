@@ -1,10 +1,10 @@
-package Payment.buildTypes
+package Discovery.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
-object Payment_Test : BuildType({
+object Discovery_Test : BuildType({
     name = "Test"
 
     vcs {
@@ -31,7 +31,7 @@ object Payment_Test : BuildType({
     }
 
     dependencies {
-        snapshot(Payment_Test) {
+        snapshot(Discovery_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

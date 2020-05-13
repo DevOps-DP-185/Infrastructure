@@ -30,7 +30,7 @@ object Identity_Deploy : BuildType({
     }
 
     dependencies {
-        snapshot(Identity_Build) {
+        snapshot(Identity_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

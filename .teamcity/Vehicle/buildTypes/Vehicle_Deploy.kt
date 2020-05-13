@@ -30,7 +30,7 @@ object Vehicle_Deploy : BuildType({
     }
 
     dependencies {
-        snapshot(Vehicle_Build) {
+        snapshot(Vehicle_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

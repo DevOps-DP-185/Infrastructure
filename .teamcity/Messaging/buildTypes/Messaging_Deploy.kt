@@ -30,7 +30,7 @@ object Messaging_Deploy : BuildType({
     }
 
     dependencies {
-        snapshot(Messaging_Build) {
+        snapshot(Messaging_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

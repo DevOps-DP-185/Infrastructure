@@ -1,7 +1,7 @@
 variable "apis" {
     description = "Name of API that must be turn on"
     type = list(string)
-    default = [ "sqladmin.googleapis.com", "servicenetworking.googleapis.com"]
+    default = [ "sqladmin.googleapis.com", "servicenetworking.googleapis.com", "cloudresourcemanager.googleapis.com"]
 }
 
 variable "database_name" {

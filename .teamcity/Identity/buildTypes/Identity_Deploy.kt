@@ -24,11 +24,6 @@ object Identity_Deploy : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     dependencies {
         snapshot(Identity_Test) {
             onDependencyCancel = FailureAction.CANCEL

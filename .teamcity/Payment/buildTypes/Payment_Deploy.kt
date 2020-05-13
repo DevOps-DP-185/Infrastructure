@@ -24,11 +24,6 @@ object Payment_Deploy : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     dependencies {
         snapshot(Payment_Build) {
             onDependencyCancel = FailureAction.CANCEL

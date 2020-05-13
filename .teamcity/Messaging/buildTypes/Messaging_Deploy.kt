@@ -24,11 +24,6 @@ object Messaging_Deploy : BuildType({
         }
     }
 
-    triggers {
-        vcs {
-        }
-    }
-
     dependencies {
         snapshot(Messaging_Test) {
             onDependencyCancel = FailureAction.CANCEL

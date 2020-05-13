@@ -5,13 +5,13 @@ provider "azurerm" {
 }
 
 provider "google" {
-  region    = "us-central1"
+  region    = "us-east1"
   version   = "=3.0.0"
 }
 
 provider "google-beta" {
-  region = "us-central1"
-  zone   = "us-central1-a"
+  region = "us-east1"
+  zone   = "us-east1-a"
   version = "=3.20"
 }
 

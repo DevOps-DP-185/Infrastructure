@@ -1,5 +1,6 @@
 package _Self
 
+import _Self.vcsRoots.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.dockerRegistry
@@ -14,6 +15,8 @@ object Project : Project({
     subProject(Gateway.Project)
     subProject(Simulation.Project)
     subProject(Identity.Project)
+
+    vcsRoot(Test_vcs)
 
     features {
         dockerRegistry {

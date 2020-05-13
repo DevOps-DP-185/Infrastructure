@@ -13,6 +13,7 @@ object Project : Project({
 
     buildType(Identity_Build)
     buildType(Identity_Deploy)
+    buildType(Identity_Test)
     buildType(Identity_Database_Update)
     buildType(Identity_Database_Rollback)    
 })

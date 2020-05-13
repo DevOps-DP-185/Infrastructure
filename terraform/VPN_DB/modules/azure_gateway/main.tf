@@ -24,6 +24,10 @@ resource "azurerm_virtual_network_gateway" "gateway" {
     private_ip_address_allocation = "Dynamic"
     subnet_id                     = var.subnet_gateway_id
   }
+  
+  lifecycle {
+    ignore_updates = true
+}
 }
 
 resource "azurerm_local_network_gateway" "local_gateway" {

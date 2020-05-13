@@ -1,9 +1,9 @@
 provider "azurerm" {
   version         = "=2.0.0"
-  client_id       =
-  subscription_id = 
-  tenant_id       =
-  client_secret   =
+ # client_id       =
+ # subscription_id = 
+ # tenant_id       =
+ # client_secret   =
   features {}
 }
 

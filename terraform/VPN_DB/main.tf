@@ -6,12 +6,16 @@ provider "azurerm" {
 provider "google" {
   region    = "us-east1"
   version   = "=3.0.0"
-}
+  project   = "project-1-273710"
+  credentials = "/home/project-1-273710-867758a0793e.json"
+  }
 
 provider "google-beta" {
   region = "us-east1"
   zone   = "us-east1-a"
   version = "=3.20"
+  project   = "project-1-273710"
+  credentials = "/home/project-1-273710-867758a0793e.json"
 }
 
 module "azure_vpc" {

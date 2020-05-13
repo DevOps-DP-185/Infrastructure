@@ -30,7 +30,7 @@ resource "azurerm_linux_virtual_machine" "example" {
   ]
 
   admin_ssh_key {
-    username   = "grishenkovitali"
+    username   = "artemkulish123"
     public_key = file("~/.ssh/id_rsa.pub")
   }
 
@@ -48,7 +48,7 @@ resource "azurerm_linux_virtual_machine" "example" {
 
     connection {
       type        = "ssh"
-      user        = "grishenkovitali"
+      user        = "artemkulish123"
       private_key = file("~/.ssh/id_rsa")
       host        = azurerm_public_ip.example.ip_address
       }

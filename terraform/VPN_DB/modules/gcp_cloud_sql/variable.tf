@@ -24,3 +24,9 @@ variable "ip_range_for_cloudsql" {
   description = "Range for CloudSQL in VPC"
   default = "10.20.0.0"
 }
+
+variable "database_username" {
+    }
+
+variable "database_password" {
+    }

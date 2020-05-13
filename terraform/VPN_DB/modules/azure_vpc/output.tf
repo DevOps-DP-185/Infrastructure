@@ -13,3 +13,6 @@ output "group_name" {
 output "subnet_gateway_id" {
   value = azurerm_subnet.subnet_gateway.id
 }
+output "subnet_id" {
+  value = azurerm_subnet.subnet.id
+}

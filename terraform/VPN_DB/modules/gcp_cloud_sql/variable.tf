@@ -17,7 +17,7 @@ variable "region" {
 
 variable "network_selflink" {
   description = "Self link of network for CloudSQL"
-  default = "https://www.googleapis.com/compute/v1/projects/winged-polygon-271409/global/networks/default"
+  default = "https://www.googleapis.com/compute/v1/projects/project-1-273710/global/networks/default"
 }
 
 variable "ip_range_for_cloudsql" {

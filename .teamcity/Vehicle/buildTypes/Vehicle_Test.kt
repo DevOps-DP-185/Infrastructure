@@ -30,6 +30,11 @@ object Vehicle_Test : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+    
     dependencies {
         snapshot(Vehicle_Build) {
             onDependencyCancel = FailureAction.CANCEL

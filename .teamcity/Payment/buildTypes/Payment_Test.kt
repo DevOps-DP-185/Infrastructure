@@ -30,6 +30,11 @@ object Payment_Test : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+    
     dependencies {
         snapshot(Payment_Build) {
             onDependencyCancel = FailureAction.CANCEL

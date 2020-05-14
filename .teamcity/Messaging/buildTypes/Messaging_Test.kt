@@ -30,6 +30,11 @@ object Messaging_Test : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+    
     dependencies {
         snapshot(Messaging_Build) {
             onDependencyCancel = FailureAction.CANCEL

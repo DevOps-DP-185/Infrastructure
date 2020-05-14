@@ -30,6 +30,11 @@ object Simulation_Test : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+    
     dependencies {
         snapshot(Simulation_Build) {
             onDependencyCancel = FailureAction.CANCEL

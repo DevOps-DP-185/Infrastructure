@@ -33,6 +33,11 @@ object Trip_Deploy : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+    
     dependencies {
         snapshot(Trip_Test) {
             onDependencyCancel = FailureAction.CANCEL

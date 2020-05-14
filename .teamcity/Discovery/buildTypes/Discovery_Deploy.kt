@@ -33,6 +33,11 @@ object Discovery_Deploy : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+    
     dependencies {
         snapshot(Discovery_Test) {
             onDependencyCancel = FailureAction.CANCEL

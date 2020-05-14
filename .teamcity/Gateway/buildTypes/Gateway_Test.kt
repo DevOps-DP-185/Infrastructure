@@ -30,6 +30,11 @@ object Gateway_Test : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+    
     dependencies {
         snapshot(Gateway_Build) {
             onDependencyCancel = FailureAction.CANCEL

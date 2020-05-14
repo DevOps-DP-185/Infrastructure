@@ -85,14 +85,21 @@ resource "azurerm_application_gateway" "network" {
   http_listener {
     name                           = local.listener_name
     frontend_ip_configuration_name = local.frontend_ip_configuration_name
-    frontend_port_name             = local.frontend_port_name
+    frontend_port_name             = "${local.frontend_port_name}-80"
+    protocol                       = "Http"
+  }
+
+  http_listener {
+    name                           = "euruka"
+    frontend_ip_configuration_name = local.frontend_ip_configuration_name
+    frontend_port_name             = "${local.frontend_port_name}-8761"
     protocol                       = "Http"
   }
 
   http_listener {
     name                           = "https-svagworks.me"
-    frontend_ip_configuration_name = "feip"
-    frontend_port_name             = "https-port"
+    frontend_ip_configuration_name = local.frontend_ip_configuration_name
+    frontend_port_name             = "${local.frontend_port_name}-443"
     protocol                       = "Https"
     ssl_certificate_name           = "svagworks.me"
   }

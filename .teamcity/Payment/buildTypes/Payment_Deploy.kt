@@ -1,6 +1,7 @@
 package Payment.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object Payment_Deploy : BuildType({
@@ -17,7 +18,7 @@ object Payment_Deploy : BuildType({
     steps {
         script {
             name = "Transfer env application files"
-            scriptContent = "scp -r /home/env artemkulish123@34.10.10:/tmp"
+            scriptContent = "scp -r /home/env %env.username%@%env.ip_staging%:/tmp"
         }
         step {
             type = "ssh-exec-runner"

@@ -16,6 +16,11 @@ object Payment_Deploy : BuildType({
 
     steps {
         step {
+            name = "Transfer env application files"
+            type = "script"
+            scriptContent = "scp -r /home/env %env.username%@%env.ip_staging%:/tmp"
+        }        
+        step {
             type = "ssh-exec-runner"
             param("jetbrains.buildServer.deployer.username", "%env.username%")
             param("jetbrains.buildServer.sshexec.command", """

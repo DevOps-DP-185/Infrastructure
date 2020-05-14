@@ -30,6 +30,11 @@ object Identity_Test : BuildType({
         }
     }
 
+    triggers {
+        vcs {
+        }
+    }
+    
     dependencies {
         snapshot(Identity_Build) {
             onDependencyCancel = FailureAction.CANCEL

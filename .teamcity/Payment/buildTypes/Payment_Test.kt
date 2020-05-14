@@ -15,12 +15,12 @@ object Payment_Test : BuildType({
         step {
             name = "Deploy to Test environment"
             type = "ssh-exec-runner"
-            param("jetbrains.buildServer.deployer.username", "artemkulish123")
+            param("jetbrains.buildServer.deployer.username", "%env.username%")
             param("jetbrains.buildServer.sshexec.command", """
                 cd /var/
                 sudo bash ./deploy.sh
             """.trimIndent())
-            param("jetbrains.buildServer.deployer.targetUrl", "34.72.168.44")
+            param("jetbrains.buildServer.deployer.targetUrl", "%env.ip_testing%")
             param("jetbrains.buildServer.sshexec.authMethod", "DEFAULT_KEY")
         }
         maven {
@@ -31,7 +31,7 @@ object Payment_Test : BuildType({
     }
 
     dependencies {
-        snapshot(Payment_Test) {
+        snapshot(Payment_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

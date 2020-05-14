@@ -25,8 +25,6 @@ variable "ip_range_for_cloudsql" {
   default = "10.20.0.0"
 }
 
-variable "database_username" {
-    }
+variable "database_username" {}
 
-variable "database_password" {
-    }
+variable "database_password" {}

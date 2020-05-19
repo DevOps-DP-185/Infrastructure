@@ -39,6 +39,9 @@ object Gateway_Deploy : BuildType({
     }
     
     dependencies {
+        snapshot(Gateway_SonarQube) {
+            onDependencyCancel = FailureAction.CANCEL
+        }
         snapshot(Gateway_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }

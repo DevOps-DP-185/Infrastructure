@@ -39,6 +39,9 @@ object Trip_Deploy : BuildType({
     }
     
     dependencies {
+        snapshot(Trip_SonarQube) {
+            onDependencyCancel = FailureAction.CANCEL
+        }
         snapshot(Trip_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }

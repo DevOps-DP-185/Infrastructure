@@ -39,6 +39,9 @@ object Messaging_Deploy : BuildType({
     }
     
     dependencies {
+        snapshot(Messaging_SonarQube) {
+            onDependencyCancel = FailureAction.CANCEL
+        }
         snapshot(Messaging_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }

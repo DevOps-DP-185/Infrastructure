@@ -31,7 +31,7 @@ object Simulation_Test : BuildType({
     }
     
     dependencies {
-        snapshot(Simulation_SonarQube) {
+        snapshot(Simulation_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

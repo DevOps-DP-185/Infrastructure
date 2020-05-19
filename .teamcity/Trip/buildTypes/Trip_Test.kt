@@ -31,7 +31,7 @@ object Trip_Test : BuildType({
     }
     
     dependencies {
-        snapshot(Trip_SonarQube) {
+        snapshot(Trip_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

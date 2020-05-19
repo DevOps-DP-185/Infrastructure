@@ -39,6 +39,9 @@ object Payment_Deploy : BuildType({
     }
     
     dependencies {
+        snapshot(Payment_SonarQube) {
+            onDependencyCancel = FailureAction.CANCEL
+        }
         snapshot(Payment_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }

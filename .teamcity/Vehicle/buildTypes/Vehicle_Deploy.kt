@@ -39,6 +39,9 @@ object Vehicle_Deploy : BuildType({
     }
     
     dependencies {
+        snapshot(Vehicle_SonarQube) {
+            onDependencyCancel = FailureAction.CANCEL
+        }
         snapshot(Vehicle_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }

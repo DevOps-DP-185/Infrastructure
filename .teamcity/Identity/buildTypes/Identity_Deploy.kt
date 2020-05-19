@@ -39,6 +39,9 @@ object Identity_Deploy : BuildType({
     }
     
     dependencies {
+        snapshot(Identity_SonarQube) {
+            onDependencyCancel = FailureAction.CANCEL
+        }
         snapshot(Identity_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }

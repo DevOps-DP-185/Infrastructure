@@ -39,6 +39,9 @@ object Discovery_Deploy : BuildType({
     }
     
     dependencies {
+        snapshot(Discovery_SonarQube) {
+            onDependencyCancel = FailureAction.CANCEL
+        }
         snapshot(Discovery_Test) {
             onDependencyCancel = FailureAction.CANCEL
         }

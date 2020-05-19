@@ -64,3 +64,9 @@ module "application_gateway" {
   private_ip_address = module.azure_vm.private_ip_address
 
 }
+    
+resource "null_resource" "pingdom" {
+  provisioner "local-exec" {
+    command = "python pingdom.py"
+  }
+}

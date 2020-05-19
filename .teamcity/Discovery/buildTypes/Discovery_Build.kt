@@ -23,9 +23,12 @@ object Discovery_Build : BuildType({
             jdkHome = "%env.JDK_11%"
         }
         script {
-            name = "Add sumo_credentials.txt"
-            scriptContent = "cp /home/sumo_credentials.txt ./"
-        }        
+            name = "Add sumo_credentials.txt and server.xml"
+            scriptContent = """
+                cp /home/sumo_credentials.txt ./
+                cp /home/server.xml ./
+            """.trimIndent()
+        }       
         dockerCommand {
             name = "Docker Build"
             commandType = build {

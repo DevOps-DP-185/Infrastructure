@@ -29,11 +29,6 @@ object Discovery_Test : BuildType({
             jdkHome = "%env.JDK_11%"
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
     
     dependencies {
         snapshot(Discovery_Build) {

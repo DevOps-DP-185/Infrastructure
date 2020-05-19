@@ -14,4 +14,5 @@ object Project : Project({
     buildType(Simulation_Build)
     buildType(Simulation_Deploy)
     buildType(Simulation_Test)  
+    buildType(Simulation_SonarQube)  
 })

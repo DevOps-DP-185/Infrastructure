@@ -29,14 +29,9 @@ object Messaging_Test : BuildType({
             jdkHome = "%env.JDK_11%"
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
     
     dependencies {
-        snapshot(Messaging_Build) {
+        snapshot(Messaging_SonarQube) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

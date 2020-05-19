@@ -29,11 +29,6 @@ object Gateway_Test : BuildType({
             jdkHome = "%env.JDK_11%"
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
     
     dependencies {
         snapshot(Gateway_Build) {

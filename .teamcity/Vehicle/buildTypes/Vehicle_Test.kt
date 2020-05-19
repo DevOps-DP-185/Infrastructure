@@ -29,14 +29,9 @@ object Vehicle_Test : BuildType({
             jdkHome = "%env.JDK_11%"
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
     
     dependencies {
-        snapshot(Vehicle_Build) {
+        snapshot(Vehicle_SonarQube) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

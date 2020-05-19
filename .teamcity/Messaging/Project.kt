@@ -14,6 +14,7 @@ object Project : Project({
     buildType(Messaging_Build)
     buildType(Messaging_Deploy)
     buildType(Messaging_Test)
+    buildType(Messaging_SonarQube)
     buildType(Messaging_Database_Update)
     buildType(Messaging_Database_Rollback)    
 })

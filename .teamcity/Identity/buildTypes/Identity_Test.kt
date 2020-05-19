@@ -29,11 +29,6 @@ object Identity_Test : BuildType({
             jdkHome = "%env.JDK_11%"
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
     
     dependencies {
         snapshot(Identity_Build) {

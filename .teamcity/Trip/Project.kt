@@ -13,7 +13,8 @@ object Project : Project({
 
     buildType(Trip_Build)
     buildType(Trip_Deploy)
-    buildType(Trip_Test)  
+    buildType(Trip_Test)
+    buildType(Trip_SonarQube) 
     buildType(Trip_Database_Update)
     buildType(Trip_Database_Rollback)      
 })

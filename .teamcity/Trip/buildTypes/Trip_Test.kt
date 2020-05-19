@@ -29,14 +29,9 @@ object Trip_Test : BuildType({
             jdkHome = "%env.JDK_11%"
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
     
     dependencies {
-        snapshot(Trip_Build) {
+        snapshot(Trip_SonarQube) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

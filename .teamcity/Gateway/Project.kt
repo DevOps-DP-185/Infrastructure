@@ -14,4 +14,5 @@ object Project : Project({
     buildType(Gateway_Build)
     buildType(Gateway_Deploy)
     buildType(Gateway_Test)
+    buildType(Gateway_SonarQube)
 })

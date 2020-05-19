@@ -14,6 +14,7 @@ object Project : Project({
     buildType(Vehicle_Build)
     buildType(Vehicle_Deploy)
     buildType(Vehicle_Test)
+    buildType(Vehicle_SonarQube)
     buildType(Vehicle_Database_Update)
     buildType(Vehicle_Database_Rollback)    
 })

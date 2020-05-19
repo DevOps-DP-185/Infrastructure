@@ -29,14 +29,9 @@ object Payment_Test : BuildType({
             jdkHome = "%env.JDK_11%"
         }
     }
-
-    triggers {
-        vcs {
-        }
-    }
     
     dependencies {
-        snapshot(Payment_Build) {
+        snapshot(Payment_SonarQube) {
             onDependencyCancel = FailureAction.CANCEL
         }
     }

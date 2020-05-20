@@ -60,6 +60,7 @@ resource "azurerm_application_gateway" "network" {
 
   backend_address_pool {
     name         = local.backend_address_pool_name
+    ip_addresses = [var.private_ip_address]
   }
 
   backend_http_settings {

@@ -117,7 +117,7 @@ depends_on = [
   ]
 }
 
-resource "null_resource" "test101" {
+resource "null_resource" "test222" {
   provisioner "local-exec" {
   command = "az vm delete -g '${var.group_name}' -n '${azurerm_linux_virtual_machine.example.name}' --yes"
   }

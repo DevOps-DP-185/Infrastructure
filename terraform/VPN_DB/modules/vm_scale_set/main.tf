@@ -16,7 +16,7 @@ resource "null_resource" "autoscale_create" {
 
 resource "null_resource" "rule_increase" {
   provisioner "local-exec" {
-  command = "az monitor autoscale rule create --resource-group demo  --autoscale-name autoscale   --condition "Percentage CPU > 70 avg 1m"  --scale out 1"
+  command = "az monitor autoscale rule create --resource-group demo  --autoscale-name autoscale   --condition 'Percentage CPU > 70 avg 1m'  --scale out 1"
 
   }
  depends_on = [
@@ -26,7 +26,7 @@ resource "null_resource" "rule_increase" {
 
 resource "null_resource" "rule_decrease" {
   provisioner "local-exec" {
-  command = "az monitor autoscale rule create --resource-group demo --autoscale-name autoscale --condition "Percentage CPU < 25 avg 1m" --scale in 1"
+  command = "az monitor autoscale rule create --resource-group demo --autoscale-name autoscale --condition 'Percentage CPU < 25 avg 1m' --scale in 1"
   }
  depends_on = [
     null_resource.autoscale_create

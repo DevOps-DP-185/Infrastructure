@@ -46,8 +46,8 @@ module "gcp_gateway" {
 module "gcp_cloud_sql" {
   source = "./modules/gcp_cloud_sql"
   
-  database_username = database_username
-  database_password = database_password
+  database_username = var.database_username
+  database_password = var.database_password
 }
   
  module "azure_vm" {

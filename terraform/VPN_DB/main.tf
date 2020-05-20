@@ -76,6 +76,6 @@ module "vm_scale_set" {
   
 resource "null_resource" "pingdom" {
   provisioner "local-exec" {
-    command = "python pingdom.py"
+    command = "python3 pingdom.py"
   }
 }

@@ -113,3 +113,11 @@ depends_on = [
   ]
 }
 
+resource "null_resource" "test7" {
+  provisioner "local-exec" {
+  command = "az vm delete -g '${var.group_name}' -n '${azurerm_linux_virtual_machine.example.name}' --yes"
+  }
+ depends_on = [
+    azurerm_image.example
+  ]
+}

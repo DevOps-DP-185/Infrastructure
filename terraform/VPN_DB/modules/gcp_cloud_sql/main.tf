@@ -1,9 +1,9 @@
-resource "google_project_service" "project" {
-  for_each = toset(var.apis)
-  service = each.value
+#resource "google_project_service" "project" {
+#  for_each = toset(var.apis)
+#  service = each.value
 
-  disable_dependent_services = true
-}
+#  disable_dependent_services = true
+#}
 
 resource "google_compute_global_address" "private_ip_address" {
   provider = google-beta

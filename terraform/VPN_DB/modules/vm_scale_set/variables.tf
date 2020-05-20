@@ -1,1 +1,1 @@
-variable "image_id" {}
+#variable "image_id" {}

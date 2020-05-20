@@ -65,16 +65,16 @@ resource "azurerm_linux_virtual_machine" "example" {
          ]
       }
   provisioner "file" {
-  source      = "~/deploy.sh"
+  source      = "./Deploy/deploy.sh"
   destination = "/home/artemkulish123/deploy.sh"
    }
 
  provisioner "file" {
-  source      = "~/env"
+  source      = "/home/env"
   destination = "/home/artemkulish123/env"
   }
  provisioner "file" {
-  source      = "~/docker-compose.yml"
+  source      = "./Deploy/docker-compose.yml"
   destination = "/home/artemkulish123/docker-compose.yml"
  }
 

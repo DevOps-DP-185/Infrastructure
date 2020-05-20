@@ -46,33 +46,33 @@ module "gcp_cloud_sql" {
   database_password = var.database_password
 }
   
-# module "azure_vm" {
-#  source = "./modules/azure_vm"
-#  connection     = module.azure_gateway.connection
-#  connection2    = module.gcp_gateway.wait_tunnel
-#  group_location = module.azure_vpc.group_location
-#  group_name     = module.azure_vpc.group_name
-#  subnet_id      = module.azure_vpc.subnet_id
-#}
+ module "azure_vm" {
+  source = "./modules/azure_vm"
+  connection     = module.azure_gateway.connection
+  connection2    = module.gcp_gateway.wait_tunnel
+  group_location = module.azure_vpc.group_location
+  group_name     = module.azure_vpc.group_name
+  subnet_id      = module.azure_vpc.subnet_id
+}
 
-#module "application_gateway" {
-#  source = "./modules/application_gateway"
+module "application_gateway" {
+  source = "./modules/application_gateway"
 
-#  group_location     = module.azure_vpc.group_location
-#  group_name         = module.azure_vpc.group_name
-#  network            = module.azure_vpc.network
-#  private_ip_address = module.azure_vm.private_ip_address
+  group_location     = module.azure_vpc.group_location
+  group_name         = module.azure_vpc.group_name
+  network            = module.azure_vpc.network
+  private_ip_address = module.azure_vm.private_ip_address
 
-#}
+}
  
 module "vm_scale_set" {
   source = "./modules/vm_scale_set"
  
- # image_id             = module.azure_vm.image_id
- # group_location      = module.azure_vpc.group_location
- # group_name          = module.azure_vpc.group_name
- # network             = module.azure_vpc.network
-#  application_gateway = module.application_gateway.applicatiom_gateway
+  image_id            = module.azure_vm.image_id
+  group_location      = module.azure_vpc.group_location
+  group_name          = module.azure_vpc.group_name
+  network             = module.azure_vpc.network
+  application_gateway = module.application_gateway.applicatiom_gateway
 
 }  
   

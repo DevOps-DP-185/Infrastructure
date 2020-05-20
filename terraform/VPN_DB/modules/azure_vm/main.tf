@@ -1,10 +1,10 @@
-resource "azurerm_public_ip" "example" {
-  name                    = "test-pip"
-  location                = var.group_location
-  resource_group_name     = var.group_name
-  allocation_method       = "Static"
-  idle_timeout_in_minutes = 30
-}
+#resource "azurerm_public_ip" "example" {
+ # name                    = "test-pip"
+ # location                = var.group_location
+ # resource_group_name     = var.group_name
+ # allocation_method       = "Static"
+ # idle_timeout_in_minutes = 30
+#}
 
 resource "azurerm_network_interface" "example" {
   name                = "example-nic"

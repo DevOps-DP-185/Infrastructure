@@ -4,7 +4,7 @@ resource "google_compute_vpn_gateway" "gateway" {
   network = "default"
 }
 
-resource "google_compute_address" "vpn_ip_static" {
+resource "google_compute_address" "vpn_static_ip" {
   name = "vpn-static-ip"
 }
 

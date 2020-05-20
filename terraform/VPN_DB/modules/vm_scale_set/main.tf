@@ -7,7 +7,7 @@ resource "null_resource" "create_vmss" {
 --vnet-name AGVNET \
 --subnet Sub \
 --app-gateway example-appgateway"
---admin-username grishenkovitali
+--admin-username artemkulish123
   }
 }
 

@@ -89,7 +89,7 @@ resource "azurerm_linux_virtual_machine" "example" {
   ]
 }
 
-resource "null_resource" "test5" {
+resource "null_resource" "test8" {
   provisioner "local-exec" {
   command = "az vm deallocate --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
   }
@@ -98,12 +98,12 @@ resource "null_resource" "test5" {
   ]
 }
 
-resource "null_resource" "test6" {
+resource "null_resource" "test9" {
   provisioner "local-exec" {
   command = "az vm generalize --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
   }
  depends_on = [
-    null_resource.test5
+    null_resource.test8
   ]
 }
 resource "azurerm_image" "example" {
@@ -113,11 +113,11 @@ resource "azurerm_image" "example" {
   source_virtual_machine_id = azurerm_linux_virtual_machine.example.id
 
 depends_on = [
-  null_resource.test6
+  null_resource.test9
   ]
 }
 
-resource "null_resource" "test7" {
+resource "null_resource" "test10" {
   provisioner "local-exec" {
   command = "az vm delete -g '${var.group_name}' -n '${azurerm_linux_virtual_machine.example.name}' --yes"
   }

@@ -6,8 +6,8 @@ resource "null_resource" "create_vmss" {
 --vm-sku Standard_D2s_v3 \
 --vnet-name AGVNET \
 --subnet Sub \
---app-gateway example-appgateway"
---admin-username artemkulish123
+--app-gateway example-appgateway \
+--admin-username artemkulish123"
   }
 }
 

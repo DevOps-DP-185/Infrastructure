@@ -1,4 +1,4 @@
-resource "null_resource" "create_vmss33" {
+resource "null_resource" "create_vmss" {
   provisioner "local-exec" {
   command = "az vmss create  -n MyVmss -g group --image  /subscriptions/92c6b1c1-2921-4a64-b4dc-dd0f92882bf6/resourceGroups/group/providers/Microsoft.Compute/images/image --instance-count 1 --vm-sku Standard_D2s_v3 --vnet-name AGVNET --subnet Sub --app-gateway example-appgateway --admin-username artemkulish123"
   }
@@ -13,7 +13,7 @@ resource "null_resource" "autoscale_create1" {
 
   }
  depends_on = [
-    null_resource.create_vmss33
+    null_resource.create_vmss
   ]
 }
 

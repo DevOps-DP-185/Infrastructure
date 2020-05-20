@@ -27,7 +27,7 @@ resource "google_service_networking_connection" "private_vpc_connection" {
 resource "google_sql_database_instance" "master" {
   provider = google-beta
 
-  name   = "private-instance-11"
+  name   = "private-instance-20"
   region = var.region
   database_version = "POSTGRES_11"
 

@@ -1,15 +1,3 @@
-#az vmss create  -n MyVmss \
-# -g rtytr \
-#--admin-username vitaliy \
-# --image UbuntuLTS /
-# --specialized/
-#--ssh-key-values /home/grishenkovitali/.ssh/id_rsa.pub \
-#--subnet sub \
-#--vm-sku Standard_F2 \
-#--vnet-name mynet \
-#--app-gateway gatetesr \
-#--instance-count 1 \
-
 resource "null_resource" "create_vmss" {
   provisioner "local-exec" {
   command = "az vmss create  -n MyVmss -g demo \
@@ -20,11 +8,6 @@ resource "null_resource" "create_vmss" {
 --subnet Sub \
 --app-gateway example-appgateway"
 --admin-username grishenkovitali
-#--ssh-key-values /home/grishenkovitali/key.pub
-
-
-# "az vm generalize --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
-
   }
 }
 

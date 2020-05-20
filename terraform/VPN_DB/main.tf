@@ -75,7 +75,7 @@ module "vm_scale_set" {
   #network             = module.azure_vpc.network
   #application_gateway = module.application_gateway.applicatiom_gateway
 
-#}  
+}  
   
 resource "null_resource" "pingdom" {
   provisioner "local-exec" {

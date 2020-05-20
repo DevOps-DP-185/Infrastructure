@@ -55,8 +55,7 @@ resource "azurerm_linux_virtual_machine" "example" {
 
  provisioner "remote-exec" {
       inline = [
-          "sudo apt-get update | apt upgrade -y",
-          "sudo apt-get install apache2 -y",
+          "sudo apt-get update && sudo apt upgrade -y",
           "sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common -y",
           "curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -",
           "sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable'",
@@ -65,4 +64,52 @@ resource "azurerm_linux_virtual_machine" "example" {
           "sudo apt install docker-compose -y"
          ]
       }
+  provisioner "file" {
+  source      = "~/deploy.sh"
+  destination = "/home/artemkulish123/deploy.sh"
+   }
+
+ provisioner "file" {
+  source      = "~/env"
+  destination = "/home/artemkulish123/env"
+  }
+ provisioner "file" {
+  source      = "~/docker-compose.yml"
+  destination = "/home/artemkulish123/docker-compose.yml"
  }
+
+ provisioner "remote-exec" {
+      inline = [
+          "sudo waagent -deprovision -force"
+      ]
+   }
+}
+
+resource "null_resource" "test5" {
+  provisioner "local-exec" {
+  command = "az vm deallocate --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
+  }
+ depends_on = [
+    azurerm_linux_virtual_machine.example
+  ]
+}
+
+resource "null_resource" "test6" {
+  provisioner "local-exec" {
+  command = "az vm generalize --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
+  }
+ depends_on = [
+    null_resource.test5
+  ]
+}
+resource "azurerm_image" "example" {
+  name                      = "image"
+  location                  = var.group_location
+  resource_group_name       = var.group_name
+  source_virtual_machine_id = azurerm_linux_virtual_machine.example.id
+
+depends_on = [
+  null_resource.test6
+  ]
+}
+

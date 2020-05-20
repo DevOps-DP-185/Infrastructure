@@ -61,7 +61,7 @@ module "application_gateway" {
   group_location     = module.azure_vpc.group_location
   group_name         = module.azure_vpc.group_name
   network            = module.azure_vpc.network
-  #private_ip_address = module.azure_vm.private_ip_address
+  private_ip_address = module.azure_vm.private_ip_address
 
 }
  

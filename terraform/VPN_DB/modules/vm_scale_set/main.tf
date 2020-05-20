@@ -3,7 +3,7 @@ resource "null_resource" "create_vmss" {
   command = "az vmss create  -n MyVmss -g demo \
 --image /subscriptions/92c6b1c1-2921-4a64-b4dc-dd0f92882bf6/resourceGroups/demo/providers/Microsoft.Compute/images/image \
 --instance-count 1 \
---vm-sku Standard_B1s \
+--vm-sku Standard_D2s_v3 \
 --vnet-name AGVNET \
 --subnet Sub \
 --app-gateway example-appgateway"

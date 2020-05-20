@@ -65,19 +65,19 @@ resource "azurerm_linux_virtual_machine" "example" {
           "sudo apt install docker-compose -y"
          ]
       }
-  provisioner "file" {
-  source      = "../Deploy/deploy.sh"
-  destination = "/home/artemkulish123/deploy.sh"
-   }
+ # provisioner "file" {
+ # source      = "../Deploy/deploy.sh"
+ # destination = "/home/artemkulish123/deploy.sh"
+  # }
 
- provisioner "file" {
-  source      = "/home/env"
-  destination = "/home/artemkulish123/env"
-  }
- provisioner "file" {
-  source      = "../Deploy/docker-compose.yml"
-  destination = "/home/artemkulish123/docker-compose.yml"
- }
+ #provisioner "file" {
+ # source      = "/home/env"
+ # destination = "/home/artemkulish123/env"
+ # }
+ #provisioner "file" {
+ # source      = "../Deploy/docker-compose.yml"
+ # destination = "/home/artemkulish123/docker-compose.yml"
+ #}
 
  provisioner "remote-exec" {
       inline = [

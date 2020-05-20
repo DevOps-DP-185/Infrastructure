@@ -1,34 +1,34 @@
-resource "null_resource" "create_vmss" {
+resource "null_resource" "create_vmss1" {
   provisioner "local-exec" {
   command = "az vmss create  -n MyVmss -g demo --image '${var.image_id}' --instance-count 1 --vm-sku Standard_D2s_v3 --vnet-name AGVNET --subnet Sub --app-gateway example-appgateway --admin-username artemkulish123"
   }
 }
 
-resource "null_resource" "autoscale_create" {
+resource "null_resource" "autoscale_create1" {
   provisioner "local-exec" {
   command = "az monitor autoscale create -g demo --resource MyVmss --resource-type Microsoft.Compute/virtualMachineScaleSets --name autoscale --min-count 1 --max-count 2 --count 1"
 
   }
  depends_on = [
-    null_resource.create_vmss
+    null_resource.create_vmss1
   ]
 }
 
-resource "null_resource" "rule_increase" {
+resource "null_resource" "rule_increase1" {
   provisioner "local-exec" {
   command = "az monitor autoscale rule create --resource-group demo  --autoscale-name autoscale   --condition 'Percentage CPU > 70 avg 1m'  --scale out 1"
 
   }
  depends_on = [
-    null_resource.autoscale_create
+    null_resource.autoscale_create1
   ]
 }
 
-resource "null_resource" "rule_decrease" {
+resource "null_resource" "rule_decrease1" {
   provisioner "local-exec" {
   command = "az monitor autoscale rule create --resource-group demo --autoscale-name autoscale --condition 'Percentage CPU < 25 avg 1m' --scale in 1"
   }
  depends_on = [
-    null_resource.autoscale_create
+    null_resource.autoscale_create1
   ]
 }

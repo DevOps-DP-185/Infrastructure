@@ -30,12 +30,5 @@ object Discovery_SonarQube : BuildType({
         snapshot(Discovery_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
-    }
-    features {
-        dockerSupport {
-            loginToRegistry = on {
-                dockerRegistryId = "Demo_4"
-            }
-        }
-    }        
+    }      
 })

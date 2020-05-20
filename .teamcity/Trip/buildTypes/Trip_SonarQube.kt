@@ -30,12 +30,5 @@ object Trip_SonarQube : BuildType({
         snapshot(Trip_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
-    }
-    features {
-        dockerSupport {
-            loginToRegistry = on {
-                dockerRegistryId = "Demo_4"
-            }
-        }
-    }        
+    }     
 })

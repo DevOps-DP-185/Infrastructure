@@ -30,12 +30,5 @@ object Vehicle_SonarQube : BuildType({
         snapshot(Vehicle_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
-    }
-    features {
-        dockerSupport {
-            loginToRegistry = on {
-                dockerRegistryId = "Demo_4"
-            }
-        }
-    }        
+    }      
 })

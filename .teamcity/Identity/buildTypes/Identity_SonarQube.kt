@@ -30,12 +30,5 @@ object Identity_SonarQube : BuildType({
         snapshot(Identity_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
-    }
-    features {
-        dockerSupport {
-            loginToRegistry = on {
-                dockerRegistryId = "Demo_4"
-            }
-        }
     }        
 })

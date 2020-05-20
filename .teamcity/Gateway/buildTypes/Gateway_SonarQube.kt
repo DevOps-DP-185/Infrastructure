@@ -30,12 +30,5 @@ object Gateway_SonarQube : BuildType({
         snapshot(Gateway_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
-    }
-    features {
-        dockerSupport {
-            loginToRegistry = on {
-                dockerRegistryId = "Demo_4"
-            }
-        }
-    }        
+    }       
 })

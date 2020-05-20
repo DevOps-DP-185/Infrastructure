@@ -30,12 +30,5 @@ object Payment_SonarQube : BuildType({
         snapshot(Payment_Build) {
             onDependencyCancel = FailureAction.CANCEL
         }
-    }
-    features {
-        dockerSupport {
-            loginToRegistry = on {
-                dockerRegistryId = "Demo_4"
-            }
-        }
     }        
 })

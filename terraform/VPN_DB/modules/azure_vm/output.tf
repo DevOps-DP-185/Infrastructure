@@ -6,3 +6,4 @@ output "image_id" {
     }
 output "delete_vm"
     value = "null_resource.test222"
+}

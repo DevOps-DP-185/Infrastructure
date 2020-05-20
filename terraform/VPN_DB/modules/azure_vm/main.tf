@@ -79,49 +79,49 @@ resource "azurerm_linux_virtual_machine" "example" {
   destination = "/home/artemkulish123/docker-compose.yml"
  }
 
-# provisioner "remote-exec" {
-#      inline = [
-#         "sudo waagent -deprovision -force"
-#      ]
-#  }
+ provisioner "remote-exec" {
+      inline = [
+         "sudo waagent -deprovision -force"
+      ]
+  }
    depends_on = [
     var.connection, var.connection2
   ]
 }
 
-#resource "null_resource" "test5" {
-#  provisioner "local-exec" {
-#  command = "az vm deallocate --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
-#  }
-# depends_on = [
-#    azurerm_linux_virtual_machine.example
-#  ]
-#}
+resource "null_resource" "test5" {
+  provisioner "local-exec" {
+  command = "az vm deallocate --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
+  }
+ depends_on = [
+    azurerm_linux_virtual_machine.example
+  ]
+}
 
-#resource "null_resource" "test6" {
-#  provisioner "local-exec" {
-#  command = "az vm generalize --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
-#  }
-# depends_on = [
-#    null_resource.test5
-#  ]
-#}
-#resource "azurerm_image" "example" {
-#  name                      = "image"
-#  location                  = var.group_location
-#  resource_group_name       = var.group_name
-#  source_virtual_machine_id = azurerm_linux_virtual_machine.example.id
+resource "null_resource" "test6" {
+  provisioner "local-exec" {
+  command = "az vm generalize --resource-group '${var.group_name}' --name '${azurerm_linux_virtual_machine.example.name}'"
+  }
+ depends_on = [
+    null_resource.test5
+  ]
+}
+resource "azurerm_image" "example" {
+  name                      = "image"
+  location                  = var.group_location
+  resource_group_name       = var.group_name
+  source_virtual_machine_id = azurerm_linux_virtual_machine.example.id
 
-#depends_on = [
-#  null_resource.test6
-#  ]
-#}
+depends_on = [
+  null_resource.test6
+  ]
+}
 
-#resource "null_resource" "test7" {
-#  provisioner "local-exec" {
-#  command = "az vm delete -g '${var.group_name}' -n '${azurerm_linux_virtual_machine.example.name}' --yes"
-#  }
-# depends_on = [
-#    azurerm_image.example
-#  ]
-#}
+resource "null_resource" "test7" {
+  provisioner "local-exec" {
+  command = "az vm delete -g '${var.group_name}' -n '${azurerm_linux_virtual_machine.example.name}' --yes"
+  }
+ depends_on = [
+    azurerm_image.example
+  ]
+}

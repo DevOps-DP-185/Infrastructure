@@ -67,10 +67,10 @@ module "application_gateway" {
 module "vm_scale_set" {
   source = "./modules/vm_scale_set"
 
-  group_location      = module.azure_vpc.group_location
-  group_name          = module.azure_vpc.group_name
-  network             = module.azure_vpc.network
-  application_gateway = module.application_gateway.applicatiom_gateway
+ # group_location      = module.azure_vpc.group_location
+ # group_name          = module.azure_vpc.group_name
+ # network             = module.azure_vpc.network
+ # application_gateway = module.application_gateway.applicatiom_gateway
 
 }  
   

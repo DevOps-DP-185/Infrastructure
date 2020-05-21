@@ -4,6 +4,4 @@ output "private_ip_address" {
 output "image_id" {
     value = azurerm_image.example.id
     }
-#output "delete_vm" {
-#    value = null_resource.test222
-#}
+

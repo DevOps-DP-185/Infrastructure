@@ -6,7 +6,7 @@ resource "null_resource" "create_vmss" {
 
 resource "null_resource" "autoscale_create1" {
   provisioner "local-exec" {
-  command = "az monitor autoscale create -g '${var.group_name}' --resource '${var.name_vm}' --resource-type Microsoft.Compute/virtualMachineScaleSets --name '${autoscale-name}' --min-count 1 --max-count 2 --count 1"
+  command = "az monitor autoscale create -g '${var.group_name}' --resource '${var.name_vm}' --resource-type Microsoft.Compute/virtualMachineScaleSets --name '${var.autoscale-name}' --min-count 1 --max-count 2 --count 1"
 
   }
  depends_on = [

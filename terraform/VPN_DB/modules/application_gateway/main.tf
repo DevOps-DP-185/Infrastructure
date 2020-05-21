@@ -43,10 +43,10 @@ resource "azurerm_application_gateway" "network" {
     port = 80
   }
 
-#  frontend_port {
-#    name = "local.frontend_port_name-443"
-#    port = 443
-#  }
+  frontend_port {
+    name = "local.frontend_port_name-443"
+    port = 443
+  }
 
   frontend_port {
     name = "local.frontend_port_name-8761"
@@ -58,9 +58,19 @@ resource "azurerm_application_gateway" "network" {
     public_ip_address_id = azurerm_public_ip.gateway.id
   }
 
+    ssl_policy {
+    policy_type = "Predefined"
+    policy_name = var.ssl_policy_name
+  }
+
+  ssl_certificate {
+      name     = "svagworks.me"
+      data     = base64encode(file(var.certificate_content))
+      password = var.certificate_passphrase
+    }
+  
   backend_address_pool {
     name         = local.backend_address_pool_name
-    #ip_addresses = [var.private_ip_address]
   }
 
   backend_http_settings {
@@ -71,13 +81,13 @@ resource "azurerm_application_gateway" "network" {
     request_timeout       = 30
   }
 
- # backend_http_settings {
- #   name                  = "local.http_setting_name-443"
- #   cookie_based_affinity = "Disabled"
- #   port                  = 443
- #   protocol              = "Https"
- #   request_timeout       = 30
- # }
+  backend_http_settings {
+    name                  = "local.http_setting_name-443"
+    cookie_based_affinity = "Disabled"
+    port                  = 443
+    protocol              = "Https"
+    request_timeout       = 30
+  }
 
   backend_http_settings {
     name                  = "local.http_setting_name-8761"
@@ -101,13 +111,13 @@ resource "azurerm_application_gateway" "network" {
     protocol                       = "Http"
   }
 
- # http_listener {
- #   name                           = "https-svagworks.me"
- #   frontend_ip_configuration_name = local.frontend_ip_configuration_name
- #   frontend_port_name             = "local.frontend_port_name-443"
- #   protocol                       = "Https"
- #   ssl_certificate_name           = "svagworks.me"
- # }
+  http_listener {
+    name                           = "https-svagworks.me"
+    frontend_ip_configuration_name = local.frontend_ip_configuration_name
+    frontend_port_name             = "local.frontend_port_name-443"
+    protocol                       = "Https"
+    ssl_certificate_name           = "svagworks.me"
+  }
 
   request_routing_rule {
     name                       = "local.request_routing_rule_name-80"
@@ -117,12 +127,12 @@ resource "azurerm_application_gateway" "network" {
     backend_http_settings_name = "local.http_setting_name-80"
 
 }
-#  request_routing_rule {
-#    name                       = "local.request_routing_rule_name-443"
-#    rule_type                  = "Basic"
-#    http_listener_name         = "https-svagworks.me"
-#    backend_address_pool_name  = local.backend_address_pool_name
-#    backend_http_settings_name = "local.http_setting_name-443"
+  request_routing_rule {
+    name                       = "local.request_routing_rule_name-443"
+    rule_type                  = "Basic"
+    http_listener_name         = "https-svagworks.me"
+    backend_address_pool_name  = local.backend_address_pool_name
+    backend_http_settings_name = "local.http_setting_name-443"
 
 #}
  

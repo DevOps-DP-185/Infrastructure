@@ -20,7 +20,7 @@ object Project : Project({
 
     params {
         param("env.ip_testing", "34.72.168.44")
-        param("env.ip_staging", "172.0.0.1")
+        param("env.ip_staging", "172.16.0.6")
         param("env.username", "artemkulish123")
     }
 

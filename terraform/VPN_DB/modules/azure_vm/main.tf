@@ -1,11 +1,3 @@
-#resource "azurerm_public_ip" "example" {
- # name                    = "test-pip"
- # location                = var.group_location
- # resource_group_name     = var.group_name
- # allocation_method       = "Static"
- # idle_timeout_in_minutes = 30
-#}
-
 resource "azurerm_network_interface" "example" {
   name                = "example-nic"
   location            = var.group_location
@@ -15,7 +7,6 @@ resource "azurerm_network_interface" "example" {
     name                          = "internal"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
-   # public_ip_address_id          = azurerm_public_ip.example.id
   }
 }
 
@@ -51,7 +42,6 @@ resource "azurerm_linux_virtual_machine" "example" {
       user        = "artemkulish123"
       private_key = file("~/.ssh/id_rsa")
       host     = azurerm_linux_virtual_machine.example.private_ip_address   
-      #   host        = azurerm_public_ip.example.ip_address
       }
 
  provisioner "remote-exec" {
@@ -65,19 +55,6 @@ resource "azurerm_linux_virtual_machine" "example" {
           "sudo apt install docker-compose -y"
          ]
       }
- # provisioner "file" {
- # source      = "../Deploy/deploy.sh"
- # destination = "/home/artemkulish123/deploy.sh"
-  # }
-
- #provisioner "file" {
- # source      = "/home/env"
- # destination = "/home/artemkulish123/env"
- # }
- #provisioner "file" {
- # source      = "../Deploy/docker-compose.yml"
- # destination = "/home/artemkulish123/docker-compose.yml"
- #}
 
  provisioner "remote-exec" {
       inline = [

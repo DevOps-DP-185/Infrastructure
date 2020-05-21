@@ -125,7 +125,8 @@ resource "azurerm_application_gateway" "network" {
 #    backend_http_settings_name = "local.http_setting_name-443"
 
 #}
-  request_routing_rule {
+ 
+ request_routing_rule {
     name                       = "local.request_routing_rule_name-8761"
     rule_type                  = "Basic"
     http_listener_name         = "euruka"

@@ -20,7 +20,6 @@ object Gateway_Deploy : BuildType({
             type = "ssh-exec-runner"
             param("jetbrains.buildServer.deployer.username", "%env.username%")
             param("jetbrains.buildServer.sshexec.command", """
-                sudo cp -r /tmp/env /var
                 cd /var && sudo bash deploy.sh
             """.trimIndent())
             param("jetbrains.buildServer.deployer.targetUrl", "%env.ip_staging%")
